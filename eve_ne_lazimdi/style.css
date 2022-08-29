@@ -1,0 +1,15 @@
+#info{
+    width: 300px;
+    border: 1px solid darkred;
+    margin-top: 20px;
+}
+
+#info > p{
+    margin: 5px;
+}
+#info > h3{
+    text-align: center;
+    margin: 0;
+    border-bottom: 1px solid lightgreen;
+    margin-bottom: 20px;
+}

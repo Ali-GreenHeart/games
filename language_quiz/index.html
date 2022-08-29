@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>LangQuiz</title>
+    <link rel='stylesheet' href='./style.css'>
+</head>
+
+<body>
+    <div id="root">
+        <div class="top_row">
+            <div class="btn_container">
+                <button id="en_az">en -> az</button>
+                <button id="az_en">az -> en</button>
+            </div>
+            <div class="point_tablo">
+                <p>WORDS TO FIND: <span id="words_to_find"></span></p>
+                <p>POINT: <span id="point"></span></p>
+            </div>
+        </div>
+        <div id="screen">
+            <div class="input_container">
+                <input readonly value="home?" id="left_input" type="text">
+                <input id="right_input" type="text">
+            </div>
+            <div id="found_words"></div>
+        </div>
+    </div>
+    <script src='./app.js'></script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+:root{
+    font-family: sans-serif;
+}
+h1{
+    text-align: center;
+}
+.btnContainer{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}

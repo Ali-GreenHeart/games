@@ -1,0 +1,35 @@
+#field{
+    width: 1000px;
+    height: 500px;
+    border: 2px solid black;
+    margin: 100px auto 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.color_ball{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+}
+
+
+#modal {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: white;
+    z-index: 1;
+    text-align: center;
+}
+
+#modal>* {
+    color: green;
+    margin-top: 20px;
+}
+
+#bubble_voice{
+    /* display: none; */
+}

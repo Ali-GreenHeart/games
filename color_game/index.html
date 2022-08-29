@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Game for baby developers</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="modal">
+        <h3>YOU WON THE GAME!!!</h3>
+        <h1>THIS IS FE04!!!</h1>
+        <p>POINT: <span id="modal_point"></span></p>
+        <p>COLORS FOUND: <span id="modal_colors_found"></span></p>
+        <img src="./sparta.gif" alt="">
+        <button id="refresh">refresh</button>
+    </div>
+    <div id="root">
+        <div class="header">
+            <div id="color_ball_container"></div>
+            <div class="point_container">
+                <p>POINT: <span id="point"></span></p>
+                <p>COLORS TO FIND: <span id="colors_to_find"></span></p>
+                <p>COLORS FOUND: <span id="colors_found"></span></p>
+            </div>
+        </div>
+        <div class="input_container">
+            <input id="entered_color" type="text">
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>

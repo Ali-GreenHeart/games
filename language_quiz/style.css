@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+#root {
+    max-width: 400px;
+    margin: 0 auto;
+    border: 1px solid #bbb;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.top_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.btn_container {
+    display: flex;
+    gap: 5px;
+}
+
+.btn_container>button {
+    background-color: white;
+}
+
+#screen {
+    display: none;
+    border: 1px solid #aaa;
+    padding: 10px 30px;
+}
+
+.input_container {
+    display: flex;
+    justify-content: center;
+}
+
+.input_container>input {
+    outline: none;
+    border: 1px solid #bbb;
+    height: 25px;
+}
+
+.success {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}
+
+.point_tablo * {
+    font-size: 14px;
+}
+
+.btn_container>button:hover {
+    cursor: pointer;
+}
+.btn_container>.active {
+    background-color: orange;
+}
+
+#found_words{
+    margin-top: 5px;
+    border-top: 1px solid #bbb;
+    padding-top: 5px;
+}

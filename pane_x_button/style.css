@@ -1,0 +1,38 @@
+#root {
+    margin: 10px auto;
+    min-width: 300px;
+    max-width: 900px;
+}
+
+.pane {
+    background: #edf5e1;
+    padding: 10px 20px 10px;
+    margin: 10px;
+    border-top: solid 2px #c4df9b;
+}
+
+
+.pane > .heading {
+    margin: 0;
+    padding-bottom: .3em;
+    font-size: 1.1em;
+    float: left;
+}
+
+.pane > .description {
+    margin: 0;
+    padding: 0 0 .5em;
+    clear: both;
+}
+
+.pane > .remove-button {
+    font-size: 110%;
+    color: darkred;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    float: right;
+}
