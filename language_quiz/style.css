@@ -4,7 +4,7 @@
 }
 
 #root {
-    max-width: 400px;
+    max-width: 550px;
     margin: 0 auto;
     border: 1px solid #bbb;
     padding: 10px;
@@ -67,4 +67,22 @@
     margin-top: 5px;
     border-top: 1px solid #bbb;
     padding-top: 5px;
+}
+
+
+/*  */
+#modal{
+    display: none;
+    position: absolute;
+    background-color: red;
+    inset: 0 0 0 0;
+}
+#modal>*{
+    text-align: center;
+    margin: 10px 0px;
+}
+
+#refresh{
+    display: block;
+    margin: 0 auto;
 }

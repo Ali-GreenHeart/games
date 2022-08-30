@@ -1,62 +1,85 @@
 const root = document.getElementById('root')
 const en_az = document.getElementById('en_az')
 const az_en = document.getElementById('az_en')
+const ru_az = document.getElementById('ru_az')
+const az_ru = document.getElementById('az_ru')
+const en_ru = document.getElementById('en_ru')
+const ru_en = document.getElementById('ru_en')
 const point_element = document.getElementById('point')
 const left_input = document.getElementById('left_input')
 const right_input = document.getElementById('right_input')
 const found_words = document.getElementById('found_words')
 const words_to_find_element = document.getElementById('words_to_find')
 const screen_element = document.getElementById('screen')
+const modal_element = document.getElementById('modal')
+const modal_point_element = document.getElementById('modal_point')
+const refresh_element = document.getElementById('refresh')
+
 
 const words = [
     {
         "en": "home",
-        'az': 'ev'
+        'az': 'ev',
+        'ru': 'dom'
     },
     {
         "en": 'school',
-        'az': 'mekteb'
+        'az': 'mekteb',
+        'ru': 'shkola'
     },
     {
         "en": 'father',
-        'az': 'ata'
+        'az': 'ata',
+        'ru': 'papa'
     },
     {
         "en": 'mother',
+        'ru': 'mama',
         'az': 'ana'
     },
     {
         "en": 'car',
+        'ru': 'mashina',
         'az': 'masin'
     },
     {
         "en": 'driver',
+        'ru': 'shofer',
         'az': 'surucu'
     },
     {
         "en": 'laptop',
+        'ru': 'noutbuk',
         'az': 'noutbuk'
     },
     {
         "en": 'apple',
+        'ru': 'yabloko',
         'az': 'alma'
     },
     {
         "en": 'dog',
+        'ru': 'sobaka',
         'az': 'it'
     },
     {
         "en": 'cat',
+        'ru': 'koshka',
         'az': 'pishik'
     },
     {
         "en": 'phone',
+        'ru': 'tilifon',
         'az': 'telefon'
     },
 ]
 
-en_az.addEventListener('click', () => LanguageChanger("en_az"))
-az_en.addEventListener('click', () => LanguageChanger("az_en"))
+en_az.addEventListener('click', (event) => LanguageChanger(event,"en_az"))
+az_en.addEventListener('click', (event) => LanguageChanger(event,"az_en"))
+ru_az.addEventListener('click', (event) => LanguageChanger(event,"ru_az"))
+az_ru.addEventListener('click', (event) => LanguageChanger(event,"az_ru"))
+en_ru.addEventListener('click', (event) => LanguageChanger(event,"en_ru"))
+ru_en.addEventListener('click', (event) => LanguageChanger(event,"ru_en"))
 
 let activeLang = ""
 let point = 0;
@@ -66,47 +89,23 @@ UpdateTablo()
 
 right_input.addEventListener("keydown", (e) => {
     if (e.code === 'Enter') {
-        const left_val = left_input.value
-        const right_val = right_input.value
-
-        const word_obj = words.find((obj) => {
-            if (activeLang === 'en_az') {
-                return obj.en === left_val
-            } else if (activeLang === 'az_en') {
-                return obj.az === left_val
-            }
-        })
-        let tapilasiSoz;
-        if (activeLang === 'en_az') {
-            tapilasiSoz = word_obj.az
-        } else if (activeLang === 'az_en') {
-            tapilasiSoz = word_obj.en
-        }
-        console.log(tapilasiSoz)
-        console.log(right_val)
-        if (tapilasiSoz === right_val) {
-            addResponse('success', `${left_val} - ${right_val}`)
-            point += 10
-        } else {
-            point -= 15
-            addResponse('wrong', `${left_val} - ${right_val} - (${tapilasiSoz})`)
-        }
-        words_to_find--;
-        UpdateTablo()
-        right_input.value = ''
-        if (words_to_find === 0) {
-            alert('oyun bitdi')
-            left_input.value = ''
-        } else {
-            if (activeLang === 'en_az') {
-                left_input.value = randomWord().en
-            }else if(activeLang==='az_en'){
-                left_input.value = randomWord().az
-            }
-        }
+        OnEnter()
     }
 })
 
+function OnEnter() {
+    const left_val = left_input.value // yabloko
+    const right_val = right_input.value // alma
+    const word_obj = WordObjFinder(left_val) // {}
+
+    const tapilasiSoz = TapilasiSozFunk(word_obj) // alma
+
+    WordCompare(tapilasiSoz, right_val, left_val)
+    words_to_find--;
+    right_input.value = ''
+    UpdateTablo()
+    YoxlaOyunQurtardimi()
+}
 
 // add response
 function addResponse(className, text) {
@@ -117,19 +116,44 @@ function addResponse(className, text) {
 }
 
 // language button
-function LanguageChanger(lang) {
+function LanguageChanger(event,lang) {
     activeLang = lang
-    if (lang === 'en_az') {
-        left_input.value = randomWord().en
-        en_az.classList.add("active")
-    } else if (lang === 'az_en') {
-        left_input.value = randomWord().az
-        az_en.classList.add("active")
-    }
+    event.target.classList.add('active')
+    const leftPart = lang.split('_')[0]
+    left_input.value = randomWord()[leftPart]
     screen_element.style.display = 'block'
-    az_en.setAttribute('disabled', true)
-    en_az.setAttribute('disabled', true)
+    const buttons = document.querySelector('.btn_container').children
+    for (const button of buttons) {
+        button.setAttribute('disabled', true)
+    }
     right_input.focus()
+}
+
+// find the word object
+function WordObjFinder(left_val) {
+    const word_obj = words.find((obj) => {
+        const leftPart = activeLang.split('_')[0]
+        return obj[leftPart] === left_val
+    })
+
+    return word_obj
+}
+
+// tapilasi soz
+
+function TapilasiSozFunk(word_obj) {
+    const rightPart = activeLang.split('_')[1]
+    return word_obj[rightPart]
+}
+
+// check if the game is ended or not
+function YoxlaOyunQurtardimi() {
+    if (words_to_find === 0) {
+        gameEnd()
+    } else {
+        const leftPart = activeLang.split('_')[0]
+        left_input.value = randomWord()[leftPart]
+    }
 }
 
 // update point tablo
@@ -146,7 +170,22 @@ function randomWord() {
 }
 
 // word compare (muqayise)
-function WordCompare() {
-
-
+function WordCompare(tapilasiSoz, right_val, left_val) {
+    if (tapilasiSoz === right_val) {
+        addResponse('success', `${left_val} - ${right_val}`)
+        point += 10
+    } else {
+        point -= 15
+        addResponse('wrong', `${left_val} - ${right_val} - (${tapilasiSoz})`)
+    }
 }
+
+//  oyun bitdi funksiyasi
+function gameEnd() {
+    modal_element.style.display = 'block'
+    modal_point_element.textContent = point
+}
+
+refresh_element.addEventListener('click', () => {
+    location.reload()
+})
