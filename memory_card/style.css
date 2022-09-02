@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+}
+
+#root {
+    margin: 0 auto;
+    padding: 10px;
+    width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    flex-shrink: 0;
+    width: 250px;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 50px;
+    user-select: none;
+    background-color: white;
+}
+
+.card > img {
+    width: 100%;
+    user-select: none;
+}
