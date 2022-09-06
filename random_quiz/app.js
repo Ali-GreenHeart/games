@@ -104,7 +104,7 @@ function YeniSual(object) {
                     ?
                     GameOver()
                     :
-                    GoNext()
+                    GoNext(ekran)
             }, 500);
         })
         ol.appendChild(li)
@@ -113,7 +113,7 @@ function YeniSual(object) {
     ekran.appendChild(ol)
 
     const skipBtn = CreateElement('button', "skipBtn", 'skip')
-    skipBtn.addEventListener('click', () => GoNext())
+    skipBtn.addEventListener('click', () => GoNext(ekran))
     ekran.appendChild(skipBtn)
 
     root.prepend(ekran)
@@ -124,7 +124,7 @@ function GameOver() {
     alert('Oyun bitdi')
 }
 
-function GoNext() {
+function GoNext(ekran) {
     ekran.remove()
     sualNomresi++;
     YeniSual(questions[sualNomresi])
