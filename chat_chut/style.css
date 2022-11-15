@@ -1,0 +1,101 @@
+.page-container {}
+
+p {
+    margin: 0;
+}
+
+:root {
+    --green_prm: rgb(27, 179, 128);
+    --green_sec: rgb(98, 224, 182);
+}
+
+#sentModal {
+    display: none;
+    position: absolute;
+    width: 200px;
+    text-align: center;
+    color: white;
+    top: -50px;
+    left: 80px;
+    background-color: var(--green_sec);
+    z-index: 10;
+}
+
+.chat-window {
+    max-width: 400px;
+    border: 1px solid;
+    margin: 100px auto 0;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.message-container>div {
+    width: 150px;
+    position: relative;
+    padding: 10px;
+    padding-bottom: 12px;
+}
+
+.message-container>div>p {
+    border-bottom: 0.2px solid gainsboro;
+    overflow-wrap: break-word;
+}
+
+.message-container>div>span {
+    position: absolute;
+    bottom: 0;
+    font-size: 10px;
+    right: 10px;
+}
+
+.sent-message-by-me {
+    align-self: flex-end;
+    background-color: var(--green_prm);
+}
+
+.sent-message-by-her {
+    align-self: flex-start;
+    background-color: var(--green_sec);
+}
+
+
+
+.input-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.input-container>input {
+    flex-grow: 1;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
