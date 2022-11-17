@@ -9,6 +9,9 @@ const dotMenu = document.querySelector('.dot-menu')
 const archiveMessages = document.getElementById('archiveMessages')
 const archiveMessageContainer = document.querySelector('.archive-message-container')
 const closeArchiveContainer = document.getElementById('closeArchiveContainer')
+const clearArchiveMessages = document.getElementById('clearArchiveMessages')
+
+const messageArchiveArray = []
 
 messageInput.addEventListener('keydown', (e) => {
     if (e.code === 'Enter' && e.ctrlKey) {
@@ -31,9 +34,33 @@ archiveMessages.addEventListener('click', clickOnArchiveMessages)
 closeArchiveContainer.addEventListener('click', () => {
     archiveMessageContainer.classList.add('menu-closed')
 })
+clearArchiveMessages.addEventListener('click', () => {
+    messageArchiveArray.length = 0
+    const len = archiveMessageContainer.children.length
+    for (let i = 1; i < len; i++) {
+        archiveMessageContainer.removeChild(archiveMessageContainer.lastElementChild)
+    }
+})
 
 function clickOnArchiveMessages() {
     archiveMessageContainer.classList.remove('menu-closed')
+    console.log(messageArchiveArray)
+    /*
+    mesaj:"salam necesen?"
+    sentByMe:true
+    time:"18:18"
+    */
+    messageArchiveArray.forEach((elem) => {
+        const div = document.createElement('div')
+        const h2 = document.createElement('h2')
+        h2.textContent = elem.mesaj
+
+        const p = document.createElement('p')
+        p.textContent = elem.time
+        const hr = document.createElement('hr')
+        div.append(h2, p, hr)
+        archiveMessageContainer.appendChild(div)
+    })
 }
 function clickOnDotContainer() {
     dotMenu.classList.toggle('menu-closed')
@@ -68,7 +95,12 @@ function sendMessage() {
 
 function createMessage(mesaj, sentByMe) {
     const vaxt = new Date()
-
+    const time = `${vaxt.getHours()}:${vaxt.getMinutes()}`
+    messageArchiveArray.push({
+        mesaj,
+        time,
+        sentByMe
+    })
     const div = document.createElement('div')
     div.className = sentByMe ? 'sent-message-by-me' : 'sent-message-by-her'
 
@@ -76,7 +108,7 @@ function createMessage(mesaj, sentByMe) {
     p.textContent = mesaj
 
     const span = document.createElement('span')
-    span.textContent = `${vaxt.getHours()}:${vaxt.getMinutes()}`
+    span.textContent = time
 
     div.append(p, span)
     messageContainer.appendChild(div)

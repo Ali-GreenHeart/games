@@ -139,10 +139,10 @@ p {
     right: 30px;
     top: 30px;
 }
-
-.archive-message-container>#closeArchiveContainer {
+.archive-message-container_btn_container{
     align-self: flex-end;
 }
+
 
 .archive-message-container h2,
 .archive-message-container p {
