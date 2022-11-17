@@ -7,6 +7,7 @@ const sentModal = document.getElementById('sentModal')
 const dotContainer = document.querySelector('.dot-container')
 const dotMenu = document.querySelector('.dot-menu')
 const archiveMessages = document.getElementById('archiveMessages')
+const clearChat = document.getElementById('clearChat')
 const archiveMessageContainer = document.querySelector('.archive-message-container')
 const closeArchiveContainer = document.getElementById('closeArchiveContainer')
 const clearArchiveMessages = document.getElementById('clearArchiveMessages')
@@ -31,6 +32,7 @@ scrollToBottom.addEventListener('click', () => {
 
 dotContainer.addEventListener('click', clickOnDotContainer)
 archiveMessages.addEventListener('click', clickOnArchiveMessages)
+clearChat.addEventListener('click', clearMessagesChat)
 closeArchiveContainer.addEventListener('click', () => {
     archiveMessageContainer.classList.add('menu-closed')
 })
@@ -42,14 +44,20 @@ clearArchiveMessages.addEventListener('click', () => {
     }
 })
 
+function clearMessagesChat() {
+    if (confirm('ay qa silirsen hamisini?')) {
+        const len = messageContainer.children.length
+        for (let i = 1; i < len; i++) {
+            messageContainer.removeChild(messageContainer.lastElementChild)
+        }
+    }else{
+        alert('diqqetli ol, hormetli ol!')
+    }
+}
+
 function clickOnArchiveMessages() {
     archiveMessageContainer.classList.remove('menu-closed')
     console.log(messageArchiveArray)
-    /*
-    mesaj:"salam necesen?"
-    sentByMe:true
-    time:"18:18"
-    */
     messageArchiveArray.forEach((elem) => {
         const div = document.createElement('div')
         const h2 = document.createElement('h2')
@@ -114,6 +122,7 @@ function createMessage(mesaj, sentByMe) {
     messageContainer.appendChild(div)
 }
 
-
+// mesaj beyenmek 👍 on doubleClick on message 
 // remove, edit message
-// message archive  (3 dots)
+// message archive  (3 dots) +
+// clear chat +
