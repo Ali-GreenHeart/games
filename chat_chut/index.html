@@ -9,13 +9,35 @@
     <title>Chat_Chut</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <div class="page-container">
         <div class="chat-window">
+            <div class="chat-bar">
+                <div class="dot-container">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <div class="dot-menu menu-closed">
+                        <button id="archiveMessages">archive messages</button>
+                    </div>
+                </div>
+            </div>
             <div class="message-container">
                 <div id="sentModal">mesaj gonderildi!</div>
+                <div class="sent-message-by-me">
+                    <p>waretgergte</p><span>17:40</span>
+                </div>
+                <div class="sent-message-by-her">
+                    <p>waretgergte</p><span>17:40</span>
+                </div>
+                <div class="sent-message-by-me">
+                    <p>waretgergte</p><span>17:40</span>
+                </div>
+                <div class="sent-message-by-her">
+                    <p>waretgergte</p><span>17:40</span>
+                </div>
             </div>
             <div class="input-container">
                 <input type="text" id="message" placeholder="enter your message...">

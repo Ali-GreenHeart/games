@@ -4,6 +4,10 @@ p {
     margin: 0;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --green_prm: rgb(27, 179, 128);
     --green_sec: rgb(98, 224, 182);
@@ -28,6 +32,48 @@ p {
     padding: 10px;
     border-radius: 5px;
     position: relative;
+}
+
+.chat-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: var(--green_prm);
+    margin: 0 0 10px;
+    box-shadow: 0 3px 2px gray;
+}
+
+.dot-container {
+    width: 30px;
+    height: 30px;
+    background-color: grey;
+    font-size: 15px;
+    padding-top: 7px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 50%;
+    position: relative;
+}
+
+
+.dot-container:hover {
+    background-color: rgb(98, 97, 97);
+    cursor: pointer;
+    color: white;
+}
+
+.menu-closed {
+    display: none;
+}
+
+.dot-menu {
+    position: absolute;
+    left: -70px;
+    top: 30px;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    z-index: 100;
 }
 
 .message-container {

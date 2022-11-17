@@ -4,7 +4,8 @@ const sendBtn = document.getElementById('sendBtn')
 const scrollToTop = document.getElementById('scrollToTop')
 const scrollToBottom = document.getElementById('scrollToBottom')
 const sentModal = document.getElementById('sentModal')
-
+const dotContainer = document.querySelector('.dot-container')
+const dotMenu = document.querySelector('.dot-menu')
 
 messageInput.addEventListener('keydown', (e) => {
     if (e.code === 'Enter' && e.ctrlKey) {
@@ -15,12 +16,26 @@ sendBtn.addEventListener('click', sendMessage)
 
 scrollToTop.addEventListener('click', () => {
     messageContainer.scrollTo(0, 0)
+    document.body.scrollTo(0, 0)
 })
 
 scrollToBottom.addEventListener('click', () => {
     messageContainer.scrollTo(0, messageContainer.scrollHeight)
 })
 
+dotContainer.addEventListener('click', () => {
+    clickOnDotContainer()
+})
+function clickOnDotContainer() {
+    dotMenu.classList.toggle('menu-closed')
+    const closetag = document.createElement('i')
+    if (dotMenu.classList.contains('menu-closed')) {
+        closetag.className = 'fa-solid fa-ellipsis-vertical'
+    } else {
+        closetag.className = 'fa-solid fa-xmark'
+    }
+    dotContainer.replaceChild(closetag, dotContainer.firstElementChild)
+}
 
 function sendMessage() {
     const mesaj = messageInput.value.trim()
@@ -60,4 +75,4 @@ function createMessage(mesaj, sentByMe) {
 
 
 // remove, edit message
-// message archive
+// message archive  (3 dots)
