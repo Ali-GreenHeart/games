@@ -63,7 +63,7 @@ p {
 }
 
 .menu-closed {
-    display: none;
+    display: none !important;
 }
 
 .dot-menu {
@@ -72,7 +72,8 @@ p {
     top: 30px;
     width: 100px;
     height: 100px;
-    background-color: red;
+    background-color: white;
+    box-shadow: 0 0 10px black;
     z-index: 100;
 }
 
@@ -125,7 +126,28 @@ p {
     flex-grow: 1;
 }
 
+.archive-message-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 80vh;
+    overflow-y: scroll;
+    border: 1px solid;
+    box-shadow: 0 0 10px black;
+    border-radius: 5px;
+    position: fixed;
+    right: 30px;
+    top: 30px;
+}
 
+.archive-message-container>#closeArchiveContainer {
+    align-self: flex-end;
+}
+
+.archive-message-container h2,
+.archive-message-container p {
+    margin: 0;
+}
 
 ::-webkit-scrollbar {
     width: 5px;

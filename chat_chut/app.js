@@ -6,6 +6,9 @@ const scrollToBottom = document.getElementById('scrollToBottom')
 const sentModal = document.getElementById('sentModal')
 const dotContainer = document.querySelector('.dot-container')
 const dotMenu = document.querySelector('.dot-menu')
+const archiveMessages = document.getElementById('archiveMessages')
+const archiveMessageContainer = document.querySelector('.archive-message-container')
+const closeArchiveContainer = document.getElementById('closeArchiveContainer')
 
 messageInput.addEventListener('keydown', (e) => {
     if (e.code === 'Enter' && e.ctrlKey) {
@@ -23,9 +26,15 @@ scrollToBottom.addEventListener('click', () => {
     messageContainer.scrollTo(0, messageContainer.scrollHeight)
 })
 
-dotContainer.addEventListener('click', () => {
-    clickOnDotContainer()
+dotContainer.addEventListener('click', clickOnDotContainer)
+archiveMessages.addEventListener('click', clickOnArchiveMessages)
+closeArchiveContainer.addEventListener('click', () => {
+    archiveMessageContainer.classList.add('menu-closed')
 })
+
+function clickOnArchiveMessages() {
+    archiveMessageContainer.classList.remove('menu-closed')
+}
 function clickOnDotContainer() {
     dotMenu.classList.toggle('menu-closed')
     const closetag = document.createElement('i')
