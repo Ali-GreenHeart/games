@@ -13,8 +13,8 @@ const closeArchiveContainer = document.getElementById('closeArchiveContainer')
 const clearArchiveMessages = document.getElementById('clearArchiveMessages')
 
 const messageArchiveArray = []  // mesaj time  sentByMe 
-
-
+const emojiList = ["👍", "👎", "💚", "😈", "☀", "😭"]
+let lastId = 0
 messageInput.addEventListener('keydown', (e) => {
     if (e.code === 'Enter' && e.ctrlKey) {
         sendMessage()
@@ -115,7 +115,8 @@ function createMessage(mesaj, sentByMe) {
     })
     const div = document.createElement('div')
     div.className = sentByMe ? 'sent-message-by-me' : 'sent-message-by-her'
-
+    div.id = `elem${lastId}`
+    lastId++
     const p = document.createElement('p')
     p.textContent = mesaj
 
@@ -133,10 +134,49 @@ function createMessage(mesaj, sentByMe) {
     span2.textContent = time
     clipboard_container.append(span1, span2)
 
-    div.append(p, clipboard_container)
+    const reaction_list = document.createElement('div')
+    reaction_list.className = 'reaction_list'
+    emojiList.forEach((emoji) => {
+        const btn = document.createElement('button')
+        btn.onclick = () => {
+            let ch = div.children;
+            [...ch].forEach((elem) => {
+                if (elem.classList.contains('added_emoji')) {
+                    elem.remove()
+                }
+            })
+            const added_emoji = document.createElement('div')
+            added_emoji.onclick = () => {
+                added_emoji.remove()
+            }
+            added_emoji.className = 'added_emoji'
+            added_emoji.textContent = emoji
+            reaction_list.style.display = 'none'
+            div.appendChild(added_emoji)
+        }
+        btn.textContent = emoji
+        reaction_list.appendChild(btn)
+    })
+    closeOnOutsideClick(div, () => {
+        reaction_list.style.display = 'none'
+    })
+    div.addEventListener('dblclick', () => {
+        reaction_list.style.display = 'flex'
+    })
+    div.append(reaction_list, p, clipboard_container)
     messageContainer.appendChild(div)
 }
+function closeOnOutsideClick(toWhere, callback) {
+    window.addEventListener('click', (e) => {
+        if (!e.path.includes(toWhere)) {
+            callback()
+        }
+    })
+}
 
-// mesaj beyenmek 👍 on doubleClick on message
+
+
+// + mesaj beyenmek 👍 on doubleClick on message
+// feature: show on copy!
 // remove, edit message
 // fix: 13:7 time  
