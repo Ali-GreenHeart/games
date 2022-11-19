@@ -12,7 +12,8 @@ const archiveMessageContainer = document.querySelector('.archive-message-contain
 const closeArchiveContainer = document.getElementById('closeArchiveContainer')
 const clearArchiveMessages = document.getElementById('clearArchiveMessages')
 
-const messageArchiveArray = []
+const messageArchiveArray = []  // mesaj time  sentByMe 
+
 
 messageInput.addEventListener('keydown', (e) => {
     if (e.code === 'Enter' && e.ctrlKey) {
@@ -36,13 +37,9 @@ clearChat.addEventListener('click', clearMessagesChat)
 closeArchiveContainer.addEventListener('click', () => {
     archiveMessageContainer.classList.add('menu-closed')
 })
-clearArchiveMessages.addEventListener('click', () => {
-    messageArchiveArray.length = 0
-    const len = archiveMessageContainer.children.length
-    for (let i = 1; i < len; i++) {
-        archiveMessageContainer.removeChild(archiveMessageContainer.lastElementChild)
-    }
-})
+clearArchiveMessages.addEventListener('click', clearArchiveMessagesFunc)
+
+
 
 function clearMessagesChat() {
     if (confirm('ay qa silirsen hamisini?')) {
@@ -50,19 +47,26 @@ function clearMessagesChat() {
         for (let i = 1; i < len; i++) {
             messageContainer.removeChild(messageContainer.lastElementChild)
         }
-    }else{
+    } else {
         alert('diqqetli ol, hormetli ol!')
     }
 }
-
+function clearArchiveMessagesFunc() {
+    messageArchiveArray.length = 0
+    const len = archiveMessageContainer.children.length
+    for (let i = 1; i < len; i++) {
+        archiveMessageContainer.removeChild(archiveMessageContainer.lastElementChild)
+    }
+}
 function clickOnArchiveMessages() {
     archiveMessageContainer.classList.remove('menu-closed')
     console.log(messageArchiveArray)
-    messageArchiveArray.forEach((elem) => {
+    let archivelenmemisMesajlarMassivi = messageArchiveArray.filter((el) => !el.isArchived)
+    archivelenmemisMesajlarMassivi.forEach((elem, index, array) => {
+        array[index].isArchived = true
         const div = document.createElement('div')
         const h2 = document.createElement('h2')
         h2.textContent = elem.mesaj
-
         const p = document.createElement('p')
         p.textContent = elem.time
         const hr = document.createElement('hr')
@@ -122,7 +126,5 @@ function createMessage(mesaj, sentByMe) {
     messageContainer.appendChild(div)
 }
 
-// mesaj beyenmek 👍 on doubleClick on message 
+// mesaj beyenmek 👍 on doubleClick on message
 // remove, edit message
-// message archive  (3 dots) +
-// clear chat +
