@@ -98,6 +98,7 @@ p {
 .message-container>div>p {
     border-bottom: 0.2px solid gainsboro;
     overflow-wrap: break-word;
+    user-select: none;
 }
 
 .message-container>div>span {
@@ -117,6 +118,11 @@ p {
     background-color: var(--green_sec);
 }
 
+.clipboard_container{
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+}
 
 
 .input-container {

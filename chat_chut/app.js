@@ -119,12 +119,24 @@ function createMessage(mesaj, sentByMe) {
     const p = document.createElement('p')
     p.textContent = mesaj
 
-    const span = document.createElement('span')
-    span.textContent = time
+    const clipboard_container = document.createElement('div')
+    clipboard_container.className = 'clipboard_container'
 
-    div.append(p, span)
+    const span1 = document.createElement('span')
+    span1.textContent = '📋'
+    span1.style.cursor = 'pointer'
+    span1.addEventListener('click', () => {
+        navigator.clipboard.writeText(mesaj)
+    })
+
+    const span2 = document.createElement('span')
+    span2.textContent = time
+    clipboard_container.append(span1, span2)
+
+    div.append(p, clipboard_container)
     messageContainer.appendChild(div)
 }
 
 // mesaj beyenmek 👍 on doubleClick on message
 // remove, edit message
+// fix: 13:7 time  
