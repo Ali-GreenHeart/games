@@ -24,7 +24,6 @@ sendBtn.addEventListener('click', sendMessage)
 
 scrollToTop.addEventListener('click', () => {
     messageContainer.scrollTo(0, 0)
-    document.body.scrollTo(0, 0)
 })
 
 scrollToBottom.addEventListener('click', () => {
@@ -60,15 +59,12 @@ function clearArchiveMessagesFunc() {
 }
 function clickOnArchiveMessages() {
     archiveMessageContainer.classList.remove('menu-closed')
-    console.log(messageArchiveArray)
     let archivelenmemisMesajlarMassivi = messageArchiveArray.filter((el) => !el.isArchived)
     archivelenmemisMesajlarMassivi.forEach((elem, index, array) => {
         array[index].isArchived = true
         const div = document.createElement('div')
-        const h2 = document.createElement('h2')
-        h2.textContent = elem.mesaj
-        const p = document.createElement('p')
-        p.textContent = elem.time
+        const h2 = createHTMLElementByAli('h2', elem.mesaj)
+        const p = createHTMLElementByAli('p', elem.time)
         const hr = document.createElement('hr')
         div.append(h2, p, hr)
         archiveMessageContainer.appendChild(div)
@@ -114,44 +110,36 @@ function createMessage(mesaj, sentByMe) {
     div.className = sentByMe ? 'sent-message-by-me' : 'sent-message-by-her'
     div.id = `elem${lastId}`
     lastId++
-    const p = document.createElement('p')
-    p.textContent = mesaj
+    const p = createHTMLElementByAli('p', mesaj)
 
-    const clipboard_container = document.createElement('div')
-    clipboard_container.className = 'clipboard_container'
+    const clipboard_container = createHTMLElementByAli('div', undefined, 'clipboard_container')
 
-    const span1 = document.createElement('span')
-    span1.textContent = '📋'
+    const span1 = createHTMLElementByAli('span', '📋')
     span1.style.cursor = 'pointer'
     span1.addEventListener('click', () => {
         clickToCopy(mesaj)
     })
 
-    const span2 = document.createElement('span')
-    span2.textContent = time
+
+    const span2 = createHTMLElementByAli('span', time)
     clipboard_container.append(span1, span2)
 
-    const reaction_list = document.createElement('div')
-    reaction_list.className = 'reaction_list'
+    const reaction_list = createHTMLElementByAli('div', undefined, 'reaction_list')
     emojiList.forEach((emoji) => {
-        const btn = document.createElement('button')
+        const btn = createHTMLElementByAli('button', emoji)
         btn.onclick = () => {
-            let ch = div.children;
-            [...ch].forEach((elem) => {
+            [...div.children].forEach((elem) => {
                 if (elem.classList.contains('added_emoji')) {
                     elem.remove()
                 }
             })
-            const added_emoji = document.createElement('div')
+            const added_emoji = createHTMLElementByAli('div', emoji, 'added_emoji')
             added_emoji.onclick = () => {
                 added_emoji.remove()
             }
-            added_emoji.className = 'added_emoji'
-            added_emoji.textContent = emoji
             reaction_list.style.display = 'none'
             div.appendChild(added_emoji)
         }
-        btn.textContent = emoji
         reaction_list.appendChild(btn)
     })
     closeOnOutsideClick(div, () => {
@@ -185,9 +173,17 @@ function closeOnOutsideClick(toWhere, callback) {
     })
 }
 
+function createHTMLElementByAli(tagName, textContent, className) {
+    const el = document.createElement(tagName)
+    if (textContent) {
+        el.textContent = textContent
+    }
+    el.classList.add(className)
+    return el;
+}
 
 
 // + mesaj beyenmek 👍 on doubleClick on message
-// feature: show on copy!
+// + feature: show on copy!
 // remove, edit message
 // + fix: 13:7 time  
