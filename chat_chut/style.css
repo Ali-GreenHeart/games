@@ -13,6 +13,16 @@ p {
     --green_sec: rgb(98, 224, 182);
 }
 
+#valueModal {
+    display: none;
+    position: absolute;
+    top: 38px;
+    left: 32vw;
+    width: 36vw;
+    height: 60px;
+    background-color: red;
+}
+
 #sentModal {
     display: none;
     position: absolute;
@@ -64,6 +74,11 @@ p {
 
 .menu-closed {
     display: none !important;
+}
+
+.messageBtnContainer {
+    display: flex;
+    gap: 10px;
 }
 
 .dot-menu {
@@ -126,16 +141,18 @@ p {
     left: 0;
 }
 
-.reaction_list > * {
+.reaction_list>* {
     flex-grow: 1;
     font-size: 10px;
     width: 10%;
 }
-.added_emoji{
+
+.added_emoji {
     position: absolute;
     right: 6px;
     bottom: 2px;
 }
+
 .clipboard_container {
     display: flex;
     justify-content: space-between;

@@ -4,6 +4,7 @@ const sendBtn = document.getElementById('sendBtn')
 const scrollToTop = document.getElementById('scrollToTop')
 const scrollToBottom = document.getElementById('scrollToBottom')
 const sentModal = document.getElementById('sentModal')
+const valueModal = document.getElementById('valueModal')
 const dotContainer = document.querySelector('.dot-container')
 const dotMenu = document.querySelector('.dot-menu')
 const archiveMessages = document.getElementById('archiveMessages')
@@ -106,29 +107,51 @@ function createMessage(mesaj, sentByMe) {
         time,
         sentByMe
     })
-    const div = document.createElement('div')
-    div.className = sentByMe ? 'sent-message-by-me' : 'sent-message-by-her'
-    div.id = `elem${lastId}`
-    lastId++
-    const p = createHTMLElementByAli('p', mesaj)
+    const messageElement = document.createElement('div')
+    messageElement.className = sentByMe ? 'sent-message-by-me' : 'sent-message-by-her'
+    messageElement.id = `elem${lastId}`
 
+    const messageContent = createHTMLElementByAli('p', mesaj)
     const clipboard_container = createHTMLElementByAli('div', undefined, 'clipboard_container')
 
-    const span1 = createHTMLElementByAli('span', '📋')
-    span1.style.cursor = 'pointer'
-    span1.addEventListener('click', () => {
+    const messageBtnContainer = createHTMLElementByAli('div', undefined, 'messageBtnContainer')
+
+    const copyBtn = createHTMLElementByAli('span', '📋')
+    copyBtn.style.cursor = 'pointer'
+    copyBtn.addEventListener('click', () => {
         clickToCopy(mesaj)
     })
+    messageBtnContainer.appendChild(copyBtn)
 
+    if (messageElement.classList.contains('sent-message-by-me')) {
+        const editBtn = createHTMLElementByAli('span', '🖊')
+        editBtn.style.cursor = 'pointer'
+        editBtn.addEventListener('click', (e) => {
+            // let newMessage = promptByAli()
+            
+            let newMessage = prompt('yeni mesaji elave edin: ')
+            if (newMessage) {
+                e.target.parentElement.parentElement.previousElementSibling.textContent = newMessage
+            }
 
-    const span2 = createHTMLElementByAli('span', time)
-    clipboard_container.append(span1, span2)
+        })
+        messageBtnContainer.appendChild(editBtn)
+    }
+    const removeBtn = createHTMLElementByAli('span', '✖')
+    removeBtn.style.cursor = 'pointer'
+    removeBtn.addEventListener('click', (e) => {
+        e.target.parentElement.parentElement.parentElement.remove()
+    })
+    messageBtnContainer.appendChild(removeBtn)
+
+    const timeContent = createHTMLElementByAli('span', time)
+    clipboard_container.append(messageBtnContainer, timeContent)
 
     const reaction_list = createHTMLElementByAli('div', undefined, 'reaction_list')
     emojiList.forEach((emoji) => {
         const btn = createHTMLElementByAli('button', emoji)
         btn.onclick = () => {
-            [...div.children].forEach((elem) => {
+            [...messageElement.children].forEach((elem) => {
                 if (elem.classList.contains('added_emoji')) {
                     elem.remove()
                 }
@@ -138,27 +161,29 @@ function createMessage(mesaj, sentByMe) {
                 added_emoji.remove()
             }
             reaction_list.style.display = 'none'
-            div.appendChild(added_emoji)
+            messageElement.appendChild(added_emoji)
         }
         reaction_list.appendChild(btn)
     })
-    closeOnOutsideClick(div, () => {
+    closeOnOutsideClick(messageElement, () => {
         reaction_list.style.display = 'none'
     })
-    div.addEventListener('dblclick', () => {
+    messageElement.addEventListener('dblclick', () => {
         reaction_list.style.display = 'flex'
     })
-    div.append(reaction_list, p, clipboard_container)
-    messageContainer.appendChild(div)
+    messageElement.append(reaction_list, messageContent, clipboard_container)
+    messageContainer.appendChild(messageElement)
+    lastId++
 }
+
 function clickToCopy(mesaj) {
     navigator.clipboard.writeText(mesaj)
     showFeedback('kopyalandi!')
 }
 
 function showFeedback(mesaj) {
-    sentModal.textContent = mesaj
     sentModal.style.display = 'block'
+    sentModal.textContent = mesaj
     setTimeout(() => {
         sentModal.textContent = ''
         sentModal.style.display = 'none'
@@ -178,12 +203,12 @@ function createHTMLElementByAli(tagName, textContent, className) {
     if (textContent) {
         el.textContent = textContent
     }
-    el.classList.add(className)
+    if (className) {
+        el.classList.add(className)
+    }
     return el;
 }
-
-
-// + mesaj beyenmek 👍 on doubleClick on message
-// + feature: show on copy!
-// remove, edit message
-// + fix: 13:7 time  
+// +🐛: mustn't edit her message
+// + remove message
+// - edit message
+// 🐛: click to copy doesn't work after edit!
