@@ -107,7 +107,7 @@ function sendMessage() {
 
 function createMessage(mesaj, sentByMe) {
     const vaxt = new Date()
-    const time = `${vaxt.getHours()}:${vaxt.getMinutes()}`
+    const time = `${vaxt.getHours().toString().padStart(2, '0')}:${vaxt.getMinutes().toString().padStart(2,'0')}`
     messageArchiveArray.push({
         mesaj,
         time,
