@@ -208,5 +208,4 @@ function createHTMLElementByAli(tagName, textContent, className) {
     }
     return el;
 }
-// +🐛: mustn't edit her message
 // 🐛: click to copy doesn't work after edit!
