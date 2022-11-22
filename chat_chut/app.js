@@ -96,10 +96,7 @@ function sendMessage() {
         setTimeout(() => {
             messageContainer.scrollTo(0, messageContainer.scrollHeight)
         }, 1);
-        sentModal.style.display = 'block'
-        setTimeout(() => {
-            sentModal.style.display = 'none'
-        }, 700);
+        showFeedback('mesaj gonderildi!')
     } else {
         alert('mesaj yazmamisiniz!')
     }
@@ -107,7 +104,7 @@ function sendMessage() {
 
 function createMessage(mesaj, sentByMe) {
     const vaxt = new Date()
-    const time = `${vaxt.getHours().toString().padStart(2, '0')}:${vaxt.getMinutes().toString().padStart(2,'0')}`
+    const time = `${vaxt.getHours().toString().padStart(2, '0')}:${vaxt.getMinutes().toString().padStart(2, '0')}`
     messageArchiveArray.push({
         mesaj,
         time,
@@ -127,7 +124,7 @@ function createMessage(mesaj, sentByMe) {
     span1.textContent = '📋'
     span1.style.cursor = 'pointer'
     span1.addEventListener('click', () => {
-        navigator.clipboard.writeText(mesaj)
+        clickToCopy(mesaj)
     })
 
     const span2 = document.createElement('span')
@@ -166,6 +163,20 @@ function createMessage(mesaj, sentByMe) {
     div.append(reaction_list, p, clipboard_container)
     messageContainer.appendChild(div)
 }
+function clickToCopy(mesaj) {
+    navigator.clipboard.writeText(mesaj)
+    showFeedback('kopyalandi!')
+}
+
+function showFeedback(mesaj) {
+    sentModal.textContent = mesaj
+    sentModal.style.display = 'block'
+    setTimeout(() => {
+        sentModal.textContent = ''
+        sentModal.style.display = 'none'
+    }, 700);
+}
+
 function closeOnOutsideClick(toWhere, callback) {
     window.addEventListener('click', (e) => {
         if (!e.path.includes(toWhere)) {
@@ -179,4 +190,4 @@ function closeOnOutsideClick(toWhere, callback) {
 // + mesaj beyenmek 👍 on doubleClick on message
 // feature: show on copy!
 // remove, edit message
-// fix: 13:7 time  
+// + fix: 13:7 time  
