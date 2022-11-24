@@ -16,6 +16,12 @@
 <body>
     <div class="page-container">
         <div class="chat-window">
+            <div id="valueModal">
+                <div class="value_modal_input_container">
+                    <button onclick="hideValueModal(event)" style="float:right;">X</button>
+                    <input type="text">
+                </div>
+            </div>
             <div class="chat-bar">
                 <div class="dot-container">
                     <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -47,12 +53,7 @@
             </div>
 
         </div>
-
     </div>
-    <div id="valueModal">
-        <input type="text">
-    </div>
-
     <script src="./app.js"></script>
 </body>
 

@@ -14,14 +14,27 @@ p {
 }
 
 #valueModal {
-    display: none;
+    display: block;
     position: absolute;
-    top: 38px;
-    left: 32vw;
-    width: 36vw;
-    height: 60px;
-    background-color: red;
+    inset: 10px;
+    background-color: white;
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.value_modal_input_container > input {
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.value_modal_input_container {
+    width: 360px;
+    height: 100px;
+    background-color: var(--green_prm);
+    box-shadow: 0 3px 2px grey;
+}
+
 
 #sentModal {
     display: none;
