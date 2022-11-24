@@ -132,22 +132,29 @@ function createMessage(mesaj, sentByMe) {
         const editBtn = createHTMLElementByAli('span', '🖊')
         editBtn.style.cursor = 'pointer'
         editBtn.addEventListener('click', (e) => {
-            // let newMessage = promptByAli()
-
-            let newMessage = prompt('yeni mesaji elave edin: ')
-            if (newMessage) {
-                e.target.parentElement.parentElement.previousElementSibling.textContent = newMessage
-                // bura
-                const vaxt = new Date()
-                const time = `${vaxt.getHours().toString().padStart(2, '0')}:${vaxt.getMinutes().toString().padStart(2, '0')}`
-                messageArchiveArray.push({
-                    mesaj: newMessage,
-                    time,
-                    sentByMe: true
-                })
-                clickOnArchiveMessages(true)
+            valueModal.style.display = 'flex'
+            const input = document.querySelector('#valueModal input')
+            input.placeholder = 'edit message'
+            input.value = e.path[3].children[1].textContent
+            const submitBtn = document.getElementById('valueModal_submit')
+            submitBtn.onclick = () => {
+                let newMessage = input.value
+                input.value = null
+                if (newMessage.trim()) {
+                    e.target.parentElement.parentElement.previousElementSibling.textContent = newMessage
+                    const vaxt = new Date()
+                    const time = `${vaxt.getHours().toString().padStart(2, '0')}:${vaxt.getMinutes().toString().padStart(2, '0')}`
+                    messageArchiveArray.push({
+                        mesaj: newMessage,
+                        time,
+                        sentByMe: true
+                    })
+                    clickOnArchiveMessages(true)
+                }else{
+                    alert('mesaj yazmali idin...')
+                }
+                valueModal.style.display = 'none'
             }
-
         })
         messageBtnContainer.appendChild(editBtn)
     }
@@ -221,6 +228,7 @@ function createHTMLElementByAli(tagName, textContent, className) {
     }
     return el;
 }
-
-// + 🐛 : click to copy doesn't work after edit!
+function hideValueModal() {
+    valueModal.style.display = 'none'
+}
 // ⛲ : create a prompt modal 
