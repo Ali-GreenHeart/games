@@ -58,11 +58,16 @@ p {
 
 .chat-bar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 10px;
     background-color: var(--green_prm);
     margin: 0 0 10px;
     box-shadow: 0 3px 2px gray;
+}
+.chat-bar> h2{
+    margin: 0 40px 0 0;
+    color: white;
+    flex-grow: 1;
 }
 
 .dot-container {
@@ -195,6 +200,7 @@ p {
     position: fixed;
     right: 30px;
     top: 30px;
+    background-color: white;
 }
 
 .archive-message-container_btn_container {

@@ -231,4 +231,3 @@ function createHTMLElementByAli(tagName, textContent, className) {
 function hideValueModal() {
     valueModal.style.display = 'none'
 }
-// ⛲ : create a prompt modal 
