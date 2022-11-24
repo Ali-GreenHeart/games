@@ -15,7 +15,6 @@ const clearArchiveMessages = document.getElementById('clearArchiveMessages')
 
 const messageArchiveArray = []  // mesaj time  sentByMe 
 const emojiList = ["👍", "👎", "💚", "😈", "☀", "😭"]
-let lastId = 0
 messageInput.addEventListener('keydown', (e) => {
     if (e.code === 'Enter' && e.ctrlKey) {
         sendMessage()
@@ -109,7 +108,6 @@ function createMessage(mesaj, sentByMe) {
     })
     const messageElement = document.createElement('div')
     messageElement.className = sentByMe ? 'sent-message-by-me' : 'sent-message-by-her'
-    messageElement.id = `elem${lastId}`
 
     const messageContent = createHTMLElementByAli('p', mesaj)
     const clipboard_container = createHTMLElementByAli('div', undefined, 'clipboard_container')
@@ -118,8 +116,9 @@ function createMessage(mesaj, sentByMe) {
 
     const copyBtn = createHTMLElementByAli('span', '📋')
     copyBtn.style.cursor = 'pointer'
-    copyBtn.addEventListener('click', () => {
-        clickToCopy(mesaj)
+    copyBtn.addEventListener('click', (e) => {
+        const txt = e.path[3].children[1].textContent
+        clickToCopy(txt)
     })
     messageBtnContainer.appendChild(copyBtn)
 
@@ -128,7 +127,7 @@ function createMessage(mesaj, sentByMe) {
         editBtn.style.cursor = 'pointer'
         editBtn.addEventListener('click', (e) => {
             // let newMessage = promptByAli()
-            
+
             let newMessage = prompt('yeni mesaji elave edin: ')
             if (newMessage) {
                 e.target.parentElement.parentElement.previousElementSibling.textContent = newMessage
@@ -173,11 +172,10 @@ function createMessage(mesaj, sentByMe) {
     })
     messageElement.append(reaction_list, messageContent, clipboard_container)
     messageContainer.appendChild(messageElement)
-    lastId++
 }
 
-function clickToCopy(mesaj) {
-    navigator.clipboard.writeText(mesaj)
+function clickToCopy(text) {
+    navigator.clipboard.writeText(text)
     showFeedback('kopyalandi!')
 }
 
@@ -209,5 +207,5 @@ function createHTMLElementByAli(tagName, textContent, className) {
     return el;
 }
 
-// 🐛 : click to copy doesn't work after edit!
+// + 🐛 : click to copy doesn't work after edit!
 // ⛲ : create a prompt modal 
