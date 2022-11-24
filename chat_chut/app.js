@@ -31,7 +31,9 @@ scrollToBottom.addEventListener('click', () => {
 })
 
 dotContainer.addEventListener('click', clickOnDotContainer)
-archiveMessages.addEventListener('click', clickOnArchiveMessages)
+archiveMessages.addEventListener('click', () => {
+    clickOnArchiveMessages(false)
+})
 clearChat.addEventListener('click', clearMessagesChat)
 closeArchiveContainer.addEventListener('click', () => {
     archiveMessageContainer.classList.add('menu-closed')
@@ -57,8 +59,12 @@ function clearArchiveMessagesFunc() {
         archiveMessageContainer.removeChild(archiveMessageContainer.lastElementChild)
     }
 }
-function clickOnArchiveMessages() {
-    archiveMessageContainer.classList.remove('menu-closed')
+function clickOnArchiveMessages(closeMenu) {
+    if (closeMenu) {
+        archiveMessageContainer.classList.add('menu-closed')
+    } else {
+        archiveMessageContainer.classList.remove('menu-closed')
+    }
     let archivelenmemisMesajlarMassivi = messageArchiveArray.filter((el) => !el.isArchived)
     archivelenmemisMesajlarMassivi.forEach((elem, index, array) => {
         array[index].isArchived = true
@@ -131,6 +137,15 @@ function createMessage(mesaj, sentByMe) {
             let newMessage = prompt('yeni mesaji elave edin: ')
             if (newMessage) {
                 e.target.parentElement.parentElement.previousElementSibling.textContent = newMessage
+                // bura
+                const vaxt = new Date()
+                const time = `${vaxt.getHours().toString().padStart(2, '0')}:${vaxt.getMinutes().toString().padStart(2, '0')}`
+                messageArchiveArray.push({
+                    mesaj: newMessage,
+                    time,
+                    sentByMe: true
+                })
+                clickOnArchiveMessages(true)
             }
 
         })
