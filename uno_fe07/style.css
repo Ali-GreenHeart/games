@@ -39,7 +39,25 @@ body {
     border-radius: 10px;
     position: relative;
 }
-
+.cardHIDDEN{
+    min-width: 50px;
+    width: 100px;
+    height: 150px;
+    border: 1px solid;
+    border-radius: 10px;
+    position: relative;
+}
+.cardHIDDEN::after{
+    content: "hidden";
+    position: absolute;
+    inset: 0;
+    background-color: black;
+    color: lime;
+    border-radius: inherit;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 20px;
+}
 .card > span {
     position: absolute;
     font-size: 32px;
