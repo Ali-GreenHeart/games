@@ -1,5 +1,8 @@
 const opponentElem = document.getElementById('opponent')
 const playerElem = document.getElementById('player')
+const start = document.getElementById('start')
+const divStart = document.querySelector('.divStart')
+
 
 const CARDS = [
     '1~red',
@@ -45,11 +48,18 @@ function createCards(cardCount, element) {
 
         const card = document.createElement('div')
         card.style.backgroundColor = color
-        card.className = 'card'
+        card.className = 'card style'
         const span = document.createElement('span')
         span.innerHTML = symbol
         card.appendChild(span)
-        element.appendChild(card)
+
+        start.addEventListener('click', () => {
+            element.appendChild(card)
+            setTimeout(() => {
+                divStart.style.display = "none"
+                card.classList.remove('style')
+            }, 750)
+        })
     }
 }
 
