@@ -3,74 +3,37 @@ const playerElem = document.getElementById('player')
 const start = document.getElementById('start')
 const divStart = document.querySelector('.divStart')
 let zIndex = 1
+let opponentCards = []
 
-const CARDS = [
-    '1~red',
-    '2~red',
-    '3~red',
-    '4~red',
-    '5~red',
-    '1~green',
-    '2~green',
-    '3~green',
-    '4~green',
-    '5~green',
-    '1~aquamarine',
-    '2~aquamarine',
-    '3~aquamarine',
-    '4~aquamarine',
-    '5~aquamarine',
-    '1~orange',
-    '2~orange',
-    '3~orange',
-    '4~orange',
-    '5~orange',
-    '1~gray',
-    '2~gray',
-    '3~gray',
-    '4~gray',
-    '5~gray',
-    '<i class="fa-sharp fa-solid fa-ban"></i>~red',
-    '<i class="fa-sharp fa-solid fa-ban"></i>~green',
-    '<i class="fa-sharp fa-solid fa-ban"></i>~aquamarine',
-    '<i class="fa-sharp fa-solid fa-ban"></i>~orange',
-    '<i class="fa-sharp fa-solid fa-ban"></i>~gray',
-]
-createCards(6, opponentElem)
-createCards(6, playerElem)
 
-function createCards(cardCount, element) {
-    for (let i = 0; i < cardCount; i++) {
+createCards(6, opponentElem, false, true)
+createCards(6, playerElem, true, true)
+
+
+
+
+function clickOnCard(e) {
+    const colorMe = e.target.style.backgroundColor
+    const simvolMe = e.target.firstElementChild.innerHTML
+    console.log(colorMe, simvolMe)
+    e.target.classList.add('selected')
+    e.target.style.zIndex = ++zIndex
+
+    const foundObj = opponentCards.find(({ symbol, color }) => simvolMe === symbol || colorMe === color)
+    if (foundObj) {
+        const index = opponentCards.indexOf(foundObj)
+        opponentCards.splice(index, 1)
+        createCard(opponentElem, true, foundObj)
+        opponentElem.firstElementChild.remove()
+    } else {
+        let newCard = document.createElement('div')
+        newCard.className = 'card cardHIDDEN'
+        opponentElem.appendChild(newCard)
         const card_details = randomCard()
         const symbol = card_details[0]
         const color = card_details[1]
-
-        const card = document.createElement('div')
-        card.style.backgroundColor = color
-        card.className = 'card style' 
-        const span = document.createElement('span')
-        span.innerHTML = symbol
-        card.appendChild(span)
-        card.addEventListener('click', clickOnCard)
-        start.addEventListener('click', () => {
-            element.appendChild(card)
-            setTimeout(() => {
-                divStart.style.display = "none"
-                card.classList.remove('style')
-            }, 750)
-        })
+        opponentCards.push({ symbol, color })
     }
-}
+    console.log(foundObj)
 
-function randomCard() {
-    const randomIndex = Math.floor(Math.random() * CARDS.length)
-    return CARDS.splice(randomIndex, 1)[0].split('~')
-}
-
-function clickOnCard(e) {
-    const color = e.target.style.backgroundColor
-    const simvol = e.target.firstElementChild.innerHTML
-    console.log(color, simvol)
-    e.target.classList.add('selected')
-    e.target.style.zIndex = ++zIndex
 }

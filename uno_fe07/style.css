@@ -97,4 +97,5 @@ body {
     position: absolute;
     top: 40vh;
     left: 40vw;
+    pointer-events: none;
 }
