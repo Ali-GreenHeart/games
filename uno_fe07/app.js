@@ -2,7 +2,7 @@ const opponentElem = document.getElementById('opponent')
 const playerElem = document.getElementById('player')
 const start = document.getElementById('start')
 const divStart = document.querySelector('.divStart')
-
+let zIndex = 1
 
 const CARDS = [
     '1~red',
@@ -39,7 +39,6 @@ const CARDS = [
 createCards(6, opponentElem)
 createCards(6, playerElem)
 
-
 function createCards(cardCount, element) {
     for (let i = 0; i < cardCount; i++) {
         const card_details = randomCard()
@@ -48,11 +47,11 @@ function createCards(cardCount, element) {
 
         const card = document.createElement('div')
         card.style.backgroundColor = color
-        card.className = 'card style'
+        card.className = 'card style' 
         const span = document.createElement('span')
         span.innerHTML = symbol
         card.appendChild(span)
-
+        card.addEventListener('click', clickOnCard)
         start.addEventListener('click', () => {
             element.appendChild(card)
             setTimeout(() => {
@@ -68,3 +67,10 @@ function randomCard() {
     return CARDS.splice(randomIndex, 1)[0].split('~')
 }
 
+function clickOnCard(e) {
+    const color = e.target.style.backgroundColor
+    const simvol = e.target.firstElementChild.innerHTML
+    console.log(color, simvol)
+    e.target.classList.add('selected')
+    e.target.style.zIndex = ++zIndex
+}

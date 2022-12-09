@@ -91,3 +91,10 @@ body {
     top: 300px;
     right: 20px;
 }
+
+
+.selected {
+    position: absolute;
+    top: 40vh;
+    left: 40vw;
+}
