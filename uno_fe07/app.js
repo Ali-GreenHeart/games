@@ -2,6 +2,9 @@ const opponentElem = document.getElementById('opponent')
 const playerElem = document.getElementById('player')
 const start = document.getElementById('start')
 const divStart = document.querySelector('.divStart')
+const bazaarBtn = document.getElementById('bazaarBtn')
+
+
 let zIndex = 1
 let opponentCards = []
 let lastCard = null;
@@ -11,7 +14,7 @@ createCards(6, playerElem)
 
 
 
-
+bazaarBtn.onclick = onGoToBazaar
 function clickOnCard(e) {
     const colorMe = e.target.style.backgroundColor
     const simvolMe = e.target.firstElementChild.innerHTML
@@ -39,6 +42,7 @@ function clickOnCard(e) {
             playerElem.append(newCard)
             opponentElem.firstElementChild.remove()
         } else {
+            lastCard = { color: colorMe, symbol: simvolMe }
             let newCard = document.createElement('div')
             newCard.className = 'card cardHIDDEN'
             opponentElem.appendChild(newCard)
@@ -53,5 +57,3 @@ function clickOnCard(e) {
     }
 }
 
-
-// Spaghetti code 🍝

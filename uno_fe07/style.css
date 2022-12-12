@@ -22,6 +22,11 @@ body {
     align-items: center;
     justify-content: center;
     gap: 40px;
+    overflow-x: scroll;
+}
+
+.player .card {
+    flex-shrink: 0;
 }
 
 .stadium {
@@ -101,12 +106,16 @@ body {
     pointer-events: none;
 }
 
-.bazaar{
+.bazaar {
     position: absolute;
     right: 10px;
     bottom: 10px;
 }
 
-#bazaarBtn i{
+#bazaarBtn {
+    display: none;
+}
+
+#bazaarBtn i {
     font-size: 32px;
 }

@@ -31,6 +31,13 @@ const CARDS = [
     '<i class="fa-sharp fa-solid fa-ban"></i>~gray',
 ]
 
+
+function onGoToBazaar() {
+    const card = createCard(playerElem)
+    card.classList.remove('style')
+    playerElem.appendChild(card)
+}
+
 function createCard(element) {
     const card_details = randomCard()
     let symbol = card_details[0]
@@ -54,6 +61,9 @@ function createCard(element) {
             divStart.style.display = "none"
             card.classList.remove('style')
         }, 750)
+        setTimeout(() => {
+            bazaarBtn.style.display='block'
+        }, 2000);
     })
     return card;
 }
