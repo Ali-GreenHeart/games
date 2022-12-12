@@ -30,6 +30,7 @@ body {
     border-left-style: dashed;
     border-right-style: dashed;
     height: 50%;
+    position: relative;
 }
 
 .card {
@@ -98,4 +99,14 @@ body {
     top: 40vh;
     left: 40vw;
     pointer-events: none;
+}
+
+.bazaar{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+#bazaarBtn i{
+    font-size: 32px;
 }
