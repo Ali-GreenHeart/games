@@ -60,3 +60,11 @@ function clickOnCard(e) {
     }
 }
 
+/*
+Bugs: 🐛
+1. need to tell or click uno! button. 
+2. block doesn't work!
+3. lastCard has issue
+4. disableUserClick has issue!
+
+*/
