@@ -31,26 +31,17 @@ const CARDS = [
     '<i class="fa-sharp fa-solid fa-ban"></i>~gray',
 ]
 
-function createCard(element, notHidden, random) {
+function createCard(element) {
     const card_details = randomCard()
     let symbol = card_details[0]
     let color = card_details[1]
-    if (random?.symbol) {
-        symbol = random.symbol
-        color = random.color
-    }
     const card = document.createElement('div')
     card.className = 'card style'
-    if (element === opponentElem && notHidden === false) {
+
+    if (element === opponentElem) {
         opponentCards.push({ symbol, color })
         card.classList.add('cardHIDDEN')
     } else {
-        if (random.symbol) {
-            setTimeout(() => {
-                card.classList.add('selected')
-                card.style.zIndex = ++zIndex
-            }, 600);
-        }
         card.style.backgroundColor = color
         const span = document.createElement('span')
         span.innerHTML = symbol
@@ -64,13 +55,13 @@ function createCard(element, notHidden, random) {
             card.classList.remove('style')
         }, 750)
     })
+    return card;
 }
 
-function createCards(cardCount, element, notHidden, random) {
+function createCards(cardCount, element) {
     for (let i = 0; i < cardCount; i++) {
-        createCard(element, notHidden, random)
+        createCard(element)
     }
-
 }
 
 function randomCard() {

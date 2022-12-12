@@ -6,8 +6,8 @@ let zIndex = 1
 let opponentCards = []
 
 
-createCards(6, opponentElem, false, true)
-createCards(6, playerElem, true, true)
+createCards(6, opponentElem)
+createCards(6, playerElem)
 
 
 
@@ -19,11 +19,19 @@ function clickOnCard(e) {
     e.target.classList.add('selected')
     e.target.style.zIndex = ++zIndex
 
+    // opponent gedish!
     const foundObj = opponentCards.find(({ symbol, color }) => simvolMe === symbol || colorMe === color)
     if (foundObj) {
         const index = opponentCards.indexOf(foundObj)
         opponentCards.splice(index, 1)
-        createCard(opponentElem, true, foundObj)
+        const newCard = document.createElement('div')
+        newCard.className = 'card style selected'
+        newCard.style.backgroundColor = foundObj.color
+        const span = document.createElement('span')
+        span.innerHTML = foundObj.symbol
+        newCard.appendChild(span)
+        newCard.style.zIndex = ++zIndex
+        playerElem.append(newCard)
         opponentElem.firstElementChild.remove()
     } else {
         let newCard = document.createElement('div')
@@ -35,5 +43,7 @@ function clickOnCard(e) {
         opponentCards.push({ symbol, color })
     }
     console.log(foundObj)
-
 }
+
+
+// Spaghetti code 🍝
