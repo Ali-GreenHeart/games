@@ -16,53 +16,42 @@ createCards(6, playerElem)
 
 bazaarBtn.onclick = onGoToBazaar
 function clickOnCard(e) {
-    const colorMe = e.target.style.backgroundColor
-    const simvolMe = e.target.firstElementChild.innerHTML
+    console.log(opponentCards.map(({ color, symbol }) => color + `~` + symbol).toString())
+    if (opponentCards.length === 0) {
+        alert('reqib qazandi')
+        return 0
+    }
+
+    const color = e.target instanceof HTMLDivElement ? e.target.style.backgroundColor : e.target.parentElement.style.backgroundColor
+    const symbol = e.target instanceof HTMLDivElement ? e.target.firstElementChild.innerHTML : e.target.innerHTML
 
     if (!lastCard) {
-        lastCard = { color: colorMe, symbol: simvolMe }
+        lastCard = { color, symbol }
     }
     // playerElem.classList.add('disableUserClick')
-    if (colorMe === lastCard.color || simvolMe === lastCard.symbol) {
-        console.log(colorMe, simvolMe)
+    if (color === lastCard.color || symbol === lastCard.symbol) {
         e.target.classList.add('selected')
         e.target.style.zIndex = ++zIndex
 
         // opponent gedish!
-        if (simvolMe !== BLOCK_SYMBOL) {
-            setTimeout(() => {
-                const foundCard = opponentCards.find(({ symbol, color }) => simvolMe === symbol || colorMe === color)
-                if (foundCard) {
-                    const index = opponentCards.indexOf(foundCard)
-                    opponentCards.splice(index, 1)
-                    const newCard = document.createElement('div')
-                    newCard.className = 'card style selected'
-                    newCard.style.backgroundColor = foundCard.color
-                    const span = document.createElement('span')
-                    span.innerHTML = foundCard.symbol
-                    lastCard = { ...foundCard }
-                    newCard.appendChild(span)
-                    newCard.style.zIndex = ++zIndex
-                    playerElem.append(newCard)
-                    opponentElem.firstElementChild.remove()
-                } else {
-                    lastCard = { color: colorMe, symbol: simvolMe }
-                    let newCard = document.createElement('div')
-                    newCard.className = 'card cardHIDDEN'
-                    opponentElem.appendChild(newCard)
-                    const card_details = randomCard()
-                    const symbol = card_details[0]
-                    const color = card_details[1]
-                    opponentCards.push({ symbol, color })
+        if (symbol !== BLOCK_SYMBOL) {
+            let lastOpponentCard = opponentGedish({ symbol, color })
+            while (lastOpponentCard.symbol === BLOCK_SYMBOL) {
+                if (opponentCards.length === 0) {
+                    alert('reqib qazandi')
+                    return 0
                 }
-            }, 750);
+                lastOpponentCard = opponentGedish(lastOpponentCard)
+            }
+
         } else {
-            lastCard = { color: colorMe, symbol: simvolMe }
+            lastCard = { color, symbol }
         }
         // playerElem.classList.remove('disableUserClick')
     } else {
         alert('eee duz karti gel gorum, oyun cixarma!')
     }
+    console.log(opponentCards.map(({ color, symbol }) => color + `~` + symbol).toString())
 }
 
 /*

@@ -6,7 +6,7 @@ function onGoToBazaar() {
     playerElem.appendChild(card)
 }
 
-function createCard(element) {
+function createCard(element,) {
     const card_details = randomCard()
     let symbol = card_details[0]
     let color = card_details[1]
@@ -30,15 +30,50 @@ function createCard(element) {
             card.classList.remove('style')
         }, 750)
         setTimeout(() => {
-            bazaarBtn.style.display='block'
+            bazaarBtn.style.display = 'block'
         }, 2000);
     })
     return card;
 }
 
-function createCards(cardCount, element) {
+function opponentGedish({ symbol, color }) {
+
+    // setTimeout(() => {
+    let foundCard = opponentCards.find((card) => card.symbol === BLOCK_SYMBOL || card.color === color)
+    if (!foundCard) {
+        foundCard = opponentCards.find((card) => card.symbol === symbol || card.color === color)
+    }
+    if (foundCard) {
+        const index = opponentCards.indexOf(foundCard)
+        opponentCards.splice(index, 1)
+        const newCard = document.createElement('div')
+        newCard.className = 'card style selected'
+        newCard.style.backgroundColor = foundCard.color
+        const span = document.createElement('span')
+        span.innerHTML = foundCard.symbol
+        lastCard = { ...foundCard }
+        newCard.appendChild(span)
+        newCard.style.zIndex = ++zIndex
+        playerElem.append(newCard)
+        opponentElem.firstElementChild.remove()
+    } else {
+        lastCard = { color, symbol }
+        let newCard = document.createElement('div')
+        newCard.className = 'card cardHIDDEN'
+        opponentElem.appendChild(newCard)
+        const card_details = randomCard()
+        const symbol_ = card_details[0]
+        const color_ = card_details[1]
+        opponentCards.push({ symbol: symbol_, color: color_ })
+    }
+    return foundCard || {};
+    // }, 750);
+}
+
+
+function createCards(cardCount, element,) {
     for (let i = 0; i < cardCount; i++) {
-        createCard(element)
+        createCard(element,)
     }
 }
 

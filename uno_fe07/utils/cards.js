@@ -30,3 +30,4 @@ const CARDS = [
     '<i class="fa-sharp fa-solid fa-ban"></i>~orange',
     '<i class="fa-sharp fa-solid fa-ban"></i>~gray',
 ]
+
