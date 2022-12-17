@@ -7,27 +7,28 @@
 
 body {
     margin: 0;
-    background: linear-gradient(var(--secondary_clr) , var(--primary_clr));
+    background: linear-gradient(var(--secondary_clr), var(--primary_clr));
 }
-.pageContainer{
+
+.pageContainer {
     height: 100vh;
     width: 100vw;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-#loginPage{
+#loginPage {
     border: 4px solid var(--dark_clr);
     border-radius: 20px;
     padding: 25px;
     width: 500px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-#loginPage input{
+#loginPage input {
     font-size: 2rem;
     background-color: black;
     border: none;
@@ -36,13 +37,34 @@ body {
     color: var(--light_clr);
     outline: solid 2px var(--light_clr);
 }
-#loginPage input:hover{
+
+#loginPage input:hover {
     background-color: var(--dark_clr);
     cursor: pointer;
 }
 
-#loginPage h1{
+#loginPage h1 {
     text-align: center;
     color: white;
     margin-bottom: 2.5rem;
+}
+
+
+#finishPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#finishPage h1{
+    font-size: 4rem;
+}
+#finishPage h3{
+    font-size: 2.5rem;
+}
+
+.results {
+    background-color: black;
+    border: solid 2px var(--light_clr);
+    padding: 10px 20px;
+    color: var(--light_clr);
 }
