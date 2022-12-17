@@ -1,8 +1,13 @@
+:root {
+    --primary_clr: #036ac3;
+    --secondary_clr: #3f95e1;
+}
 
 body {
     margin: 0;
     height: 100vh;
     width: 100vw;
+    background: linear-gradient(var(--secondary_clr) , var(--primary_clr));
 }
 
 
