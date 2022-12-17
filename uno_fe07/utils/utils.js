@@ -1,11 +1,11 @@
-
-
 function onGoToBazaar() {
     const card = createCard(playerElem)
     card.classList.remove('style')
     playerElem.appendChild(card)
 }
-
+setTimeout(() => {
+    bazaarBtn.style.display = 'block'
+}, 2000);
 function createCard(element,) {
     const card_details = randomCard()
     let symbol = card_details[0]
@@ -29,16 +29,12 @@ function createCard(element,) {
             divStart.style.display = "none"
             card.classList.remove('style')
         }, 750)
-        setTimeout(() => {
-            bazaarBtn.style.display = 'block'
-        }, 2000);
     })
     return card;
 }
 
 function opponentGedish({ symbol, color }) {
 
-    // setTimeout(() => {
     let foundCard = opponentCards.find((card) => card.symbol === BLOCK_SYMBOL || card.color === color)
     if (!foundCard) {
         foundCard = opponentCards.find((card) => card.symbol === symbol || card.color === color)
@@ -67,7 +63,6 @@ function opponentGedish({ symbol, color }) {
         opponentCards.push({ symbol: symbol_, color: color_ })
     }
     return foundCard || {};
-    // }, 750);
 }
 
 

@@ -15,8 +15,8 @@ createCards(6, playerElem)
 
 
 bazaarBtn.onclick = onGoToBazaar
+console.log(opponentCards.map(({ color, symbol }) => color + `~` + symbol + '\n').toString())
 function clickOnCard(e) {
-    console.log(opponentCards.map(({ color, symbol }) => color + `~` + symbol).toString())
     if (opponentCards.length === 0) {
         alert('reqib qazandi')
         return 0
@@ -28,30 +28,29 @@ function clickOnCard(e) {
     if (!lastCard) {
         lastCard = { color, symbol }
     }
-    // playerElem.classList.add('disableUserClick')
+    playerElem.classList.add('disableUserClick')
     if (color === lastCard.color || symbol === lastCard.symbol) {
+        if (opponentCards.length === 0) {
+            alert('reqib qazandi')
+            return 0
+        }
         e.target.classList.add('selected')
         e.target.style.zIndex = ++zIndex
 
         // opponent gedish!
         if (symbol !== BLOCK_SYMBOL) {
             let lastOpponentCard = opponentGedish({ symbol, color })
-            while (lastOpponentCard.symbol === BLOCK_SYMBOL) {
-                if (opponentCards.length === 0) {
-                    alert('reqib qazandi')
-                    return 0
-                }
-                lastOpponentCard = opponentGedish(lastOpponentCard)
+            if (!lastOpponentCard) {
+                onGoToBazaar()
             }
-
         } else {
             lastCard = { color, symbol }
         }
-        // playerElem.classList.remove('disableUserClick')
+        playerElem.classList.remove('disableUserClick')
     } else {
         alert('eee duz karti gel gorum, oyun cixarma!')
     }
-    console.log(opponentCards.map(({ color, symbol }) => color + `~` + symbol).toString())
+    console.log('en son----', opponentCards.map(({ color, symbol }) => color + `~` + symbol).toString())
 }
 
 /*
