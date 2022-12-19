@@ -47,7 +47,7 @@ p {
     cursor: pointer;
 }
 
-#randomWord {
+#randomWordElem {
     display: inline-block;
     border: 1px solid;
     margin: 5px 10px 10px;
