@@ -9,6 +9,14 @@ enteredWordInput.onkeydown = (event) => {
     }
 }
 
+colorModeChangerBtn.onclick = changeColorMode // dark mode -  light mode
+
+function changeColorMode() {
+    const isDarkMode = colorMode.classList.contains('darkMode')
+    colorModeChangerBtn.textContent = isDarkMode ? '🌝' : '🌞'
+    colorMode.classList.toggle('darkMode')
+}
+
 function checkWord() {
     const enteredWord = enteredWordInput.value;
     console.log(enteredWord)
