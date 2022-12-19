@@ -34,7 +34,7 @@ p {
     margin: 0 auto;
 }
 
-#colorModeChanger {
+#colorModeChangerBtn {
     float: right;
     margin: 30px 10px;
     font-size: 1rem;
@@ -43,7 +43,7 @@ p {
     padding: 0;
     line-height: 54px;
 }
-#colorModeChanger:hover {
+#colorModeChangerBtn:hover {
     cursor: pointer;
 }
 
@@ -54,7 +54,7 @@ p {
     padding: 5px 10px;
 }
 
-#enteredWord {
+#enteredWordInput {
     font-size: 1rem;
     border-style: solid;
     outline: none;
