@@ -177,5 +177,14 @@ p {
 .tips-container {
     min-width: 50px;
     max-width: 100px;
-    background-color: green;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    gap: 10px;
+}
+.tips-container  button{
+    width: 100%;
+}
+.tips-container img{
+    width: 30px;
 }
