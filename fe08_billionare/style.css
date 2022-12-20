@@ -44,10 +44,13 @@ p {
     border: none;
     border-radius: 50px;
     padding: 0 10px;
-    color: var(--light_clr);
+    color: rgba(255, 255, 255, .8);
     outline: solid 2px var(--light_clr);
 }
 
+#loginPage input::placeholder {
+    color: rgba(255, 255, 255, .8);
+}
 #loginPage input:hover {
     background-color: var(--dark_clr);
     cursor: pointer;
@@ -90,6 +93,7 @@ p {
     display: flex;
     justify-content: space-between;
     color: white;
+    gap: 10px;
 }
 
 /* @media (max-width:600px) {
