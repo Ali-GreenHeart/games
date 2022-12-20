@@ -1,5 +1,9 @@
 @import url("./fonts/fonts.css");
 
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --dark_clr: #06457b;
     --primary_clr: #036ac3;
@@ -10,6 +14,10 @@
 body {
     margin: 0;
     background: linear-gradient(var(--secondary_clr), var(--primary_clr));
+}
+
+p {
+    margin: 0;
 }
 
 .pageContainer {
@@ -53,17 +61,19 @@ body {
 }
 
 
-#finishPage{
+#finishPage {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-#finishPage h1{
+
+#finishPage h1 {
     font-size: 4rem;
     font-family: RubikVinyl;
     color: white;
 }
-#finishPage h3{
+
+#finishPage h3 {
     font-size: 2.5rem;
 }
 
@@ -72,4 +82,90 @@ body {
     border: solid 2px var(--light_clr);
     padding: 10px 20px;
     color: var(--light_clr);
+}
+
+/* games */
+#gamePage {
+    width: 50vw;
+    display: flex;
+    height: 400px;
+    justify-content: space-between;
+    color: white;
+}
+
+/* @media (max-width:600px) {
+    #gamePage{
+        flex-direction: column;
+    }
+} */
+
+#gamePage>div {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.prizes-container {
+    max-width: 200px;
+    min-width: 100px;
+    background-color: red;
+}
+
+.question-container {
+    max-width: 700px;
+    min-width: 250px;
+    border: 2px solid var(--dark_clr);
+    padding: 10px;
+}
+
+.question-container input {
+    font-size: 1.5rem;
+    background-color: black;
+    border-radius: 50px;
+    margin-top: 10px;
+    padding: 0 10px;
+    color: var(--light_clr);
+    outline: solid 2px var(--light_clr);
+    float: right;
+}
+
+.question-container>input:hover{
+    background-color: var(--dark_clr);
+    cursor: pointer;
+}
+
+.question-container h3 {
+    margin: 0;
+    font-family: KanitBold;
+    border-bottom: 2px solid var(--dark_clr);
+    margin-bottom: 10px;
+    font-size: 2rem;
+    user-select: none;
+    overflow-wrap: break-word;
+}
+
+.answer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.answer-container>p {
+    width: 45%;
+    border: 1px solid var(--dark_clr);
+    font-size: 1.5rem;
+    overflow-wrap: break-word;
+    padding: 5px;
+    user-select: none;
+}
+
+.answer-container>p:hover {
+    background-color: var(--light_clr);
+    cursor: pointer;
+}
+
+.tips-container {
+    min-width: 50px;
+    max-width: 100px;
+    background-color: green;
 }
