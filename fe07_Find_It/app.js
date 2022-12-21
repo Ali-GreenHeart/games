@@ -47,3 +47,4 @@ function randomIndexCreator() {
     const randomIndex = Math.floor(Math.random() * WORDS.length)
     return randomIndex;
 }
+// FINISH THE PROJECT! ✅
