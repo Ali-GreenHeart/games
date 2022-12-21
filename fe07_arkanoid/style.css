@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: gray;
+}
+
+.container {
+    width: 680px;
+    height: 500px;
+    background-color: black;
+    margin: 60px auto;
+    position: relative;
+}
+
+.block {
+    width: 150px;
+    height: 30px;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 1px 1px 10px lime, 1px 1px 20px lime inset;
+}
+
+.blockup {
+    width: 150px;
+    height: 30px;
+    margin: 10px;
+    display: inline-block;
+    box-shadow: 1px 1px 20px lime inset;
+}
+
+#ball {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    bottom: 32px;
+    position: absolute;
+    border: 1px solid lime;
+    box-shadow: 1px 1px 30px lime, inset 1px 1px 10px lime;
+}
+
+.finished {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: red;
+}
