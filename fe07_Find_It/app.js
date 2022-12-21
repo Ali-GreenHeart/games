@@ -19,7 +19,7 @@ enteredWordInput.onkeydown = (event) => {
 colorModeChangerBtn.onclick = changeColorMode // dark mode -  light mode
 
 function checkWord() {
-    const enteredWord = enteredWordInput.value.trim();
+    const enteredWord = enteredWordInput.value.trim().toLowerCase();
     const azeVersion = WORDS.find((word) => word.en === randomWordElem.textContent).az
     const azeVersionIndex = WORDS.findIndex((word) => word.en === randomWordElem.textContent)
     const p = document.createElement('p')
