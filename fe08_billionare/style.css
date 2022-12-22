@@ -9,6 +9,8 @@
     --primary_clr: #036ac3;
     --secondary_clr: #3f95e1;
     --light_clr: #60aef2;
+    --success_clr: #04b513;
+    --error_clr: #b50404;
 }
 
 body {
@@ -51,6 +53,7 @@ p {
 #loginPage input::placeholder {
     color: rgba(255, 255, 255, .8);
 }
+
 #loginPage input:hover {
     background-color: var(--dark_clr);
     cursor: pointer;
@@ -114,13 +117,15 @@ p {
     flex-direction: column;
     gap: 10px;
 }
-.prizes-container > p{
+
+.prizes-container>p {
     background-color: var(--primary_clr);
     text-align: center;
     user-select: none;
     font-family: KanitBold;
 }
-.takenPrize{
+
+.takenPrize {
     background-color: var(--dark_clr) !important;
 }
 
@@ -142,7 +147,7 @@ p {
     float: right;
 }
 
-.question-container>input:hover{
+.question-container>input:hover {
     background-color: var(--dark_clr);
     cursor: pointer;
 }
@@ -186,9 +191,23 @@ p {
     user-select: none;
     gap: 10px;
 }
-.tips-container  button{
+
+.tips-container button {
     width: 100%;
 }
-.tips-container img{
+
+.tips-container img {
     width: 30px;
+}
+
+.correctAnswer {
+    background-color: var(--success_clr) !important;
+}
+
+.disabledAnswersContainer>p {
+    pointer-events: none !important;
+}
+
+.wrongAnswer {
+    background-color: var(--error_clr) !important;
 }
