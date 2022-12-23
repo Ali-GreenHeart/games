@@ -59,8 +59,8 @@ body {
 }
 .cube{
     flex-shrink: 0;
-    width: 40px;
-    height: 20px;
+    width: 60px;
+    height: 30px;
     border: 1px solid white;
     margin: 1px;
 }

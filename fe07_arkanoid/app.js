@@ -10,11 +10,15 @@ const COLORS = [
     'purple',
     'pink'
 ]
-const CUBE_COUNT = 20
-const SPEED = 10
+const CUBE_COUNT = 15
+const SPEED_Y = 50
+const SPEED_X = 5
+let ballDirection = 1
 let ballSpeed = 10
 
+setInterval(ball_move, 40)
 generateCubes()
+ball_move()
 
 
 function ball_move() {
@@ -23,7 +27,28 @@ function ball_move() {
     let ball_right_side = parseInt(ball.style.left) + 40
 
     ball.style.bottom = parseInt(ball.style.bottom) + ballSpeed + 'px'
+    ball.style.left = parseInt(ball.style.left) + (ballDirection * SPEED_X) + 'px'
+    if (parseInt(ball.style.bottom) === 32) {
+        if (parseInt(ball.style.left) >= parseInt(block.style.left)
+            &&
+            parseInt(ball.style.left) < parseInt(block.style.left) + 75
+        ) {
+            ballDirection = -1
+        } else if (
+            parseInt(ball.style.left) >= parseInt(block.style.left) + 75
+            &&
+            parseInt(ball.style.left) <= parseInt(block.style.left) + 150) {
+            ballDirection = 1
+        }
+    }
+    // 
+    if (parseInt(ball.style.left) > 640 || parseInt(ball.style.left) < 0) {
+        ballDirection = -ballDirection
+    }
 
+
+
+    // minimum y teyin edilmesi 
     if (
         ball_left_side > parseInt(block.style.left) && ball_left_side < (parseInt(block.style.left) + 150)
         ||
@@ -40,14 +65,12 @@ function ball_move() {
     }
 }
 
-setInterval(ball_move, 40)
 
 window.addEventListener('keydown', (e) => {
-    ball_move()
     if (e.key === 'ArrowRight') {
-        block.style.left = parseInt(block.style.left) + SPEED + 'px'
+        block.style.left = parseInt(block.style.left) + SPEED_Y + 'px'
     } else if (e.key === 'ArrowLeft') {
-        block.style.left = parseInt(block.style.left) - SPEED + 'px'
+        block.style.left = parseInt(block.style.left) - SPEED_Y + 'px'
     }
     if (parseInt(block.style.left) < 0) {
         block.style.left = '0px'
