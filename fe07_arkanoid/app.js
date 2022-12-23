@@ -29,19 +29,24 @@ function ball_move() {
     ball.style.bottom = parseInt(ball.style.bottom) + ballSpeed + 'px'
     ball.style.left = parseInt(ball.style.left) + (ballDirection * SPEED_X) + 'px'
     if (parseInt(ball.style.bottom) === 32) {
+        // eger top block-un sol terefine deyse
         if (parseInt(ball.style.left) >= parseInt(block.style.left)
             &&
             parseInt(ball.style.left) < parseInt(block.style.left) + 75
         ) {
+            // direction menfi olsun ki, sol terefe getsin
             ballDirection = -1
         } else if (
+            // eger top block-un sag terefine deyse
             parseInt(ball.style.left) >= parseInt(block.style.left) + 75
             &&
-            parseInt(ball.style.left) <= parseInt(block.style.left) + 150) {
+            parseInt(ball.style.left) <= parseInt(block.style.left) + 150
+        ) {
+            // direction musbet olsun ki, sag terefe getsin
             ballDirection = 1
         }
     }
-    // 
+    // sol-sag divarlara deyende istiqamet deyishsin
     if (parseInt(ball.style.left) > 640 || parseInt(ball.style.left) < 0) {
         ballDirection = -ballDirection
     }
