@@ -2,7 +2,14 @@ const ball = document.getElementById("ball")
 const block = document.querySelector(".block")
 const cubeContainer = document.querySelector('.cube-container')
 
-
+const COLORS = [
+    'red',
+    'aqua',
+    'yellow',
+    'lime',
+    'purple',
+    'pink'
+]
 const CUBE_COUNT = 20
 const SPEED = 10
 let ballSpeed = 10
@@ -51,8 +58,14 @@ window.addEventListener('keydown', (e) => {
 
 function generateCubes() {
     for (let i = 0; i < CUBE_COUNT; i++) {
+        const randomColor = COLORS[randomIndex(COLORS.length)]
         const cube = document.createElement('div')
         cube.className = 'cube'
+        cube.style.backgroundColor = randomColor
         cubeContainer.appendChild(cube)
     }
+}
+
+function randomIndex(end) {
+    return Math.floor(Math.random() * end)
 }
