@@ -2,9 +2,6 @@ const ball = document.getElementById("ball")
 const block = document.querySelector(".block")
 const cubeContainer = document.querySelector('.cube-container')
 
-generateCubes()
-ball_move()
-
 const COLORS = [
     'red',
     'aqua',
@@ -22,6 +19,9 @@ const BALL_MOVE_INTERVAL_ID = setInterval(ball_move, 40)
 let ballDirection_x = 1
 let ballDirection_y = 1
 
+
+generateCubes()
+ball_move()
 
 
 function ball_move() {
