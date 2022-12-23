@@ -1,7 +1,13 @@
 const ball = document.getElementById("ball")
 const block = document.querySelector(".block")
+const cubeContainer = document.querySelector('.cube-container')
+
+
+const CUBE_COUNT = 20
 const SPEED = 10
 let ballSpeed = 10
+
+generateCubes()
 
 
 function ball_move() {
@@ -42,3 +48,11 @@ window.addEventListener('keydown', (e) => {
         block.style.left = '530px'
     }
 })
+
+function generateCubes() {
+    for (let i = 0; i < CUBE_COUNT; i++) {
+        const cube = document.createElement('div')
+        cube.className = 'cube'
+        cubeContainer.appendChild(cube)
+    }
+}
