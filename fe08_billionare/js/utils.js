@@ -9,13 +9,13 @@ function onLogIn() {
 }
 
 // get random index
-function getRandomIndex() {
-    return Math.floor(Math.random() * QS.length)
+function getRandomIndex(max) {
+    return Math.floor(Math.random() * max)
 }
 
 
 function getRandomQuestion() {
-    const questionIndex = getRandomIndex()
+    const questionIndex = getRandomIndex(QS.length)
     const question = QS[questionIndex]
     QS.splice(questionIndex, 1)
     return question;
@@ -36,20 +36,26 @@ function relocateIndexesOfArray(arr) {
 
 
 function fiftyFiftyBtnClick(question) {
-    if (fiftyFiftyBtnClick.disabled) {
-        alert('isletmisen!')
-    } else {
-        fiftyFiftyBtn.disabled = 'true'
-        const dogru_cvb_index = question.answers.indexOf(question.correctAnswer)
-        const indexes = [0, 1, 2, 3]
-        indexes.splice(dogru_cvb_index, 1)
-        relocateIndexesOfArray(indexes)
-        answerContainer.children[indexes[0]].style.visibility = 'hidden'
-        answerContainer.children[indexes[2]].style.visibility = 'hidden'
-        console.log(indexes)
-    }
+    fiftyFiftyBtn.disabled = 'true'
+    const dogru_cvb_index = question.answers.indexOf(question.correctAnswer)
+    const indexes = [0, 1, 2, 3]
+    indexes.splice(dogru_cvb_index, 1)
+    relocateIndexesOfArray(indexes)
+    answerContainer.children[indexes[0]].style.visibility = 'hidden'
+    answerContainer.children[indexes[2]].style.visibility = 'hidden'
+    console.log(indexes)
+    fiftyFiftyBtn.disabled = true
+    fiftyFiftyBtn.onclick = null
 }
 
 function jokerBtnClick() {
     jokerBtn.disabled = 'true'
+    jokerBtn.onclick = null
 }
+
+function phoneBtnClick() {
+    const randomIndex = getRandomIndex(4)
+    answerContainer.children[randomIndex].style.backgroundColor = '#06457b'
+    phoneBtn.disabled = true
+    phoneBtn.onclick = null;
+} 

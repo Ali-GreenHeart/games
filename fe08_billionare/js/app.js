@@ -1,8 +1,10 @@
 let jokerUsed = false
 login_btn.addEventListener('click', onLogIn)
 jokerBtn.onclick = jokerBtnClick
+phoneBtn.onclick = phoneBtnClick
 
 function randomQuestionGenerator() {
+    console.dir(phoneBtn)
     const question = getRandomQuestion()
     questionElem.textContent = question.question
     fiftyFiftyBtn.onclick = () => fiftyFiftyBtnClick(question)
