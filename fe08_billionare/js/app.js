@@ -10,7 +10,6 @@ function randomQuestionGenerator() {
         showResults()
     }
 
-    console.dir(phoneBtn)
     const question = getRandomQuestion()
     questionElem.textContent = question.question
     fiftyFiftyBtn.onclick = () => fiftyFiftyBtnClick(question)
@@ -44,8 +43,7 @@ function randomQuestionGenerator() {
             }
         }
         answerContainer.appendChild(p)
-    })
-    console.log(question)
+    }) 
 }
 randomQuestionGenerator()
 
@@ -54,6 +52,8 @@ randomQuestionGenerator()
 
 /*
 ----BUGS!----
-1. Cavab verenden sonra komekci buttonlar disabled olmalidir.
+1. add login functionality
+2. add finish page dynamic data
+3. 
 
 */
