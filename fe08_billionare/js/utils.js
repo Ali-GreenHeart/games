@@ -58,4 +58,30 @@ function phoneBtnClick() {
     answerContainer.children[randomIndex].style.backgroundColor = '#06457b'
     phoneBtn.disabled = true
     phoneBtn.onclick = null;
-} 
+}
+
+function sumOfAllPrizes() {
+    let s = 0
+    for (let i = 100; i <= (prizeCount - 1) * 100; i += 100) {
+        s += i
+    }
+    return s;
+}
+
+function onLose(e) {
+    e.target.classList.add('wrongAnswer')
+    alert('uduzdun')
+    fiftyFiftyBtn.disabled = 'true'
+    jokerBtn.disabled = 'true'
+    phoneBtn.disabled = 'true'
+    answerContainer.classList.add('disabledAnswersContainer')
+    showResults()
+}
+
+
+function showResults() {
+    gamePage.style.display = 'none'
+    finishPage.style.display = 'flex'
+    console.log(sumOfAllPrizes())
+    return 0;
+}

@@ -129,6 +129,10 @@ p {
     background-color: var(--dark_clr) !important;
 }
 
+.prizes-container>p:nth-last-child(0) {
+    background: red;
+}
+
 .question-container {
     max-width: 700px;
     min-width: 250px;
