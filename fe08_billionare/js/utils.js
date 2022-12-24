@@ -49,3 +49,7 @@ function fiftyFiftyBtnClick(question) {
         console.log(indexes)
     }
 }
+
+function jokerBtnClick() {
+    jokerBtn.disabled = 'true'
+}

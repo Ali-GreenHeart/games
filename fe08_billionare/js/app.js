@@ -1,4 +1,6 @@
+let jokerUsed = false
 login_btn.addEventListener('click', onLogIn)
+jokerBtn.onclick = jokerBtnClick
 
 function randomQuestionGenerator() {
     const question = getRandomQuestion()
@@ -12,6 +14,7 @@ function randomQuestionGenerator() {
 
             if (dogrudurmu) {
                 e.target.classList.add('correctAnswer')
+                answerContainer.classList.add('disabledAnswersContainer')
                 setTimeout(() => {
                     answerContainer.removeChild(answerContainer.firstElementChild)
                     answerContainer.removeChild(answerContainer.firstElementChild)
@@ -21,12 +24,18 @@ function randomQuestionGenerator() {
                     answerContainer.classList.remove('disabledAnswersContainer')
                 }, 750);
             } else {
-                e.target.classList.add('wrongAnswer')
-                fiftyFiftyBtn.disabled = 'true'
-                jokerBtn.disabled = 'true'
-                phoneBtn.disabled = 'true'
+                if (jokerBtn.disabled && !jokerUsed) {
+                    e.target.style.visibility = 'hidden'
+                    jokerUsed = true
+                } else {
+                    e.target.classList.add('wrongAnswer')
+                    alert('uduzdun')
+                    fiftyFiftyBtn.disabled = 'true'
+                    jokerBtn.disabled = 'true'
+                    phoneBtn.disabled = 'true'
+                    answerContainer.classList.add('disabledAnswersContainer')
+                }
             }
-            answerContainer.classList.add('disabledAnswersContainer')
         }
         answerContainer.appendChild(p)
     })
