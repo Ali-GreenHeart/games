@@ -53,10 +53,12 @@ randomQuestionGenerator()
 
 
 
+
 /*
 ----BUGS!----
-1. add login functionality
-2. add finish page dynamic data
-3. 
+1. add login functionality 
+    1.1. validation
+2. add more questions
+
 
 */

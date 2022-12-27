@@ -4,6 +4,7 @@ function onLogIn() {
     console.log(nameInput.value)
     console.log(surnameInput.value)
     console.log(phoneInput.value)
+    user_name.textContent = nameInput.value
     loginPage.style.display = 'none'
     gamePage.style.display = 'flex'
 }
@@ -70,6 +71,8 @@ function sumOfAllPrizes() {
 
 function onLose(e) {
     e.target.classList.add('wrongAnswer')
+    const winner_loser  = document.getElementById('winner_loser')
+    winner_loser.textContent = 'Loser!'
     fiftyFiftyBtn.disabled = 'true'
     jokerBtn.disabled = 'true'
     phoneBtn.disabled = 'true'
