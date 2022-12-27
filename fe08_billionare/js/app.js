@@ -2,12 +2,15 @@ let jokerUsed = false
 login_btn.addEventListener('click', onLogIn)
 jokerBtn.onclick = jokerBtnClick
 phoneBtn.onclick = phoneBtnClick
-let prizeCount = 1
+let prizeCount = 0
+
+console.log(QS.length)
 
 function randomQuestionGenerator() {
 
     if (QS.length === 0) {
         showResults()
+        return;
     }
 
     const question = getRandomQuestion()
@@ -20,9 +23,9 @@ function randomQuestionGenerator() {
             const dogrudurmu = e.target.textContent === question.correctAnswer
 
             if (dogrudurmu) {
+                prizeCount++
                 const lastChild = document.querySelector(`.prizes-container > p:nth-last-child(${prizeCount})`)
                 lastChild?.classList.add('takenPrize')
-                prizeCount++
                 e.target.classList.add('correctAnswer')
                 answerContainer.classList.add('disabledAnswersContainer')
                 setTimeout(() => {
@@ -43,7 +46,7 @@ function randomQuestionGenerator() {
             }
         }
         answerContainer.appendChild(p)
-    }) 
+    })
 }
 randomQuestionGenerator()
 

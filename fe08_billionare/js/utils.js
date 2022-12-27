@@ -62,7 +62,7 @@ function phoneBtnClick() {
 
 function sumOfAllPrizes() {
     let s = 0
-    for (let i = 100; i <= (prizeCount - 1) * 100; i += 100) {
+    for (let i = 100; i <= prizeCount * 100; i += 100) {
         s += i
     }
     return s;
@@ -82,6 +82,8 @@ function onLose(e) {
 function showResults() {
     gamePage.style.display = 'none'
     finishPage.style.display = 'flex'
-    console.log(sumOfAllPrizes())
+    let result = sumOfAllPrizes()
+    correct_count.textContent = prizeCount
+    paymentElem.textContent = result
     return 0;
 }
