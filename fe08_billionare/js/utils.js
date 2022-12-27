@@ -70,12 +70,13 @@ function sumOfAllPrizes() {
 
 function onLose(e) {
     e.target.classList.add('wrongAnswer')
-    alert('uduzdun')
     fiftyFiftyBtn.disabled = 'true'
     jokerBtn.disabled = 'true'
     phoneBtn.disabled = 'true'
     answerContainer.classList.add('disabledAnswersContainer')
-    showResults()
+    setTimeout(() => {
+        showResults()
+    }, 500);
 }
 
 
