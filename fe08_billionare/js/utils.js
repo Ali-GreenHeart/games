@@ -9,6 +9,15 @@ function onLogIn() {
     gamePage.style.display = 'flex'
 }
 
+function createStadium() {
+    const prizesContainer = document.querySelector('.prizes-container')
+    for (let i = 15; i >= 1; i--) {
+        const p = document.createElement('p')
+        p.textContent = i * 100
+        prizesContainer.appendChild(p)
+    }
+}
+
 // get random index
 function getRandomIndex(max) {
     return Math.floor(Math.random() * max)
@@ -71,7 +80,7 @@ function sumOfAllPrizes() {
 
 function onLose(e) {
     e.target.classList.add('wrongAnswer')
-    const winner_loser  = document.getElementById('winner_loser')
+    const winner_loser = document.getElementById('winner_loser')
     winner_loser.textContent = 'Loser!'
     fiftyFiftyBtn.disabled = 'true'
     jokerBtn.disabled = 'true'

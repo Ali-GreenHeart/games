@@ -6,9 +6,11 @@ let prizeCount = 0
 
 console.log(QS.length)
 
+createStadium()
+
 function randomQuestionGenerator() {
 
-    if (QS.length === 0) {
+    if (prizeCount === 15) {
         showResults()
         return;
     }
