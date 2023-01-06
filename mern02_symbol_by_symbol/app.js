@@ -24,7 +24,8 @@ const suallar = [
 const questionElem = document.getElementById('question')
 const wordContainerElem = document.getElementById('word_container')
 const symbolsContainerElem = document.getElementById('symbols_container')
-
+const clapsAudioElem = document.getElementById('claps')
+const failAudioElem = document.getElementById('fail')
 
 
 questionElem.textContent = suallar[1].sual
@@ -49,18 +50,20 @@ function alphabetClick(symbol) {
             symbolsContainerElem.classList.add('disable_all_buttons')
             if (cavab.toLowerCase() === suallar[1].cavab) {
                 console.log('duz tapdin!')
+                clapsAudioElem.play()
             } else {
-                alert('yanlisdi')
+                failAudioElem.play()
+                console.log('yanlisdi')
             }
         }
     }, 200);
     console.log(symbol)
 }
 /*
-    1. dogru tapanda alqis sesleri
+    +1. dogru tapanda alqis sesleri,sehv tapanda, uduzmalidir (benq benq beeeenq), 
     2. reng deyishsin, yanlis olanda qirmizi, dogru -> yasil
     3. novbeti sual kecmir
-    4. sehv tapanda, uduzmalidir (benq benq beeeenq), ve xallari gostermelidir
+    4. ve xallari gostermelidir
     5. herfleri silmek. sagda 1-1 silmek buttonu
     6. point system (xal sistemi)
     7. 
