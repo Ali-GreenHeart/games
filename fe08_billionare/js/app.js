@@ -11,6 +11,7 @@ createStadium()
 function randomQuestionGenerator() {
 
     if (prizeCount === 15) {
+        document.getElementById('claps').play()
         showResults()
         return;
     }

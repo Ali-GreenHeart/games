@@ -79,6 +79,7 @@ function sumOfAllPrizes() {
 }
 
 function onLose(e) {
+    document.getElementById('fail').play()
     e.target.classList.add('wrongAnswer')
     const winner_loser = document.getElementById('winner_loser')
     winner_loser.textContent = 'Loser!'
