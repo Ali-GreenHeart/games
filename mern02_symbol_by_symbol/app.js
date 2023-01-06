@@ -47,12 +47,21 @@ function alphabetClick(symbol) {
         if (lastIndex === cavabUzunluq) {
             alphabetClick = () => { }
             symbolsContainerElem.classList.add('disable_all_buttons')
-            if(cavab.toLowerCase()===suallar[1].cavab){
+            if (cavab.toLowerCase() === suallar[1].cavab) {
                 console.log('duz tapdin!')
-            }else{
+            } else {
                 alert('yanlisdi')
             }
         }
     }, 200);
     console.log(symbol)
 }
+/*
+    1. dogru tapanda alqis sesleri
+    2. reng deyishsin, yanlis olanda qirmizi, dogru -> yasil
+    3. novbeti sual kecmir
+    4. sehv tapanda, uduzmalidir (benq benq beeeenq), ve xallari gostermelidir
+    5. herfleri silmek. sagda 1-1 silmek buttonu
+    6. point system (xal sistemi)
+    7. 
+*/
