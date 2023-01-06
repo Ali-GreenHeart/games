@@ -27,7 +27,6 @@ const symbolsContainerElem = document.getElementById('symbols_container')
 
 
 
-let cavab = ''
 questionElem.textContent = suallar[1].sual
 let cavabUzunluq = suallar[1].cavab.length
 
@@ -37,10 +36,23 @@ for (let i = 0; i < cavabUzunluq; i++) {
     wordContainerElem.appendChild(newDiv)
 }
 
+let cavab = ''
 let lastIndex = 0
 
 function alphabetClick(symbol) {
     document.getElementById(`div${lastIndex}`).textContent = symbol
+    cavab = cavab.concat(symbol)
     lastIndex++
+    setTimeout(() => {
+        if (lastIndex === cavabUzunluq) {
+            alphabetClick = () => { }
+            symbolsContainerElem.classList.add('disable_all_buttons')
+            if(cavab.toLowerCase()===suallar[1].cavab){
+                console.log('duz tapdin!')
+            }else{
+                alert('yanlisdi')
+            }
+        }
+    }, 200);
     console.log(symbol)
 }
