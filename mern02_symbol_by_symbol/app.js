@@ -46,6 +46,8 @@ window.addEventListener('keydown', (e) => {
     }
     else if (e.key >= 'a' && e.key <= 'z') {
         alphabetClick(e.key.toUpperCase())
+    } else if (e.key === 'Enter' && lastIndex === cavabUzunluq) {
+        goNext()
     }
 })
 function reset() {
@@ -121,4 +123,5 @@ function clearLastSymbol() {
     +6. point system (xal sistemi)
     +7. klaviatura ile yazmaq
     +8. win,fail part
+    +9. next on enter
 */
