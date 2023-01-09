@@ -27,18 +27,41 @@ const symbolsContainerElem = document.getElementById('symbols_container')
 const clapsAudioElem = document.getElementById('claps')
 const failAudioElem = document.getElementById('fail')
 
-
-questionElem.textContent = suallar[1].sual
-let cavabUzunluq = suallar[1].cavab.length
-
-for (let i = 0; i < cavabUzunluq; i++) {
-    const newDiv = document.createElement('div')
-    newDiv.id = `div${i}`
-    wordContainerElem.appendChild(newDiv)
-}
+let sualNo = 0
+let cavabUzunluq = ''
 
 let cavab = ''
 let lastIndex = 0
+
+writeQuestion()
+
+function goNext() {
+    sualNo++
+    writeQuestion()
+}
+
+function reset() {
+    cavab = ''
+    lastIndex = 0
+    questionElem.textContent = ''
+    clapsAudioElem.pause()
+    let childLength = wordContainerElem.children.length
+    for (let i = 0; i < childLength; i++) {
+        wordContainerElem.removeChild(wordContainerElem.firstChild)
+    }
+    symbolsContainerElem.classList.remove('disable_all_buttons')
+}
+
+function writeQuestion() {
+    reset()
+    questionElem.textContent = suallar[sualNo].sual
+    cavabUzunluq = suallar[sualNo].cavab.length
+    for (let i = 0; i < cavabUzunluq; i++) {
+        const newDiv = document.createElement('div')
+        newDiv.id = `div${i}`
+        wordContainerElem.appendChild(newDiv)
+    }
+}
 
 function alphabetClick(symbol) {
     document.getElementById(`div${lastIndex}`).textContent = symbol
@@ -46,9 +69,8 @@ function alphabetClick(symbol) {
     lastIndex++
     setTimeout(() => {
         if (lastIndex === cavabUzunluq) {
-            alphabetClick = () => { }
             symbolsContainerElem.classList.add('disable_all_buttons')
-            if (cavab.toLowerCase() === suallar[1].cavab) {
+            if (cavab.toLowerCase() === suallar[sualNo].cavab) {
                 console.log('duz tapdin!')
                 clapsAudioElem.play()
             } else {
@@ -62,9 +84,9 @@ function alphabetClick(symbol) {
 /*
     +1. dogru tapanda alqis sesleri,sehv tapanda, uduzmalidir (benq benq beeeenq), 
     2. reng deyishsin, yanlis olanda qirmizi, dogru -> yasil
-    3. novbeti sual kecmir
+    +3. novbeti sual kecmir
     4. ve xallari gostermelidir
     5. herfleri silmek. sagda 1-1 silmek buttonu
     6. point system (xal sistemi)
-    7. 
+    7. klaviatura ile yazmaq
 */
