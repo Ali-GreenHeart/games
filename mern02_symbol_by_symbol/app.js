@@ -44,6 +44,9 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'Backspace') {
         clearLastSymbol()
     }
+    else if (e.key >= 'a' && e.key <= 'z') {
+        alphabetClick(e.key.toUpperCase())
+    }
 })
 function reset() {
     cavab = ''
@@ -77,23 +80,21 @@ function alphabetClick(symbol) {
     document.getElementById(`div${lastIndex}`).textContent = symbol
     cavab = cavab.concat(symbol)
     lastIndex++
-    setTimeout(() => {
-        if (lastIndex === cavabUzunluq) {
-            symbolsContainerElem.classList.add('disable_all_buttons')
-            if (cavab.toLowerCase() === suallar[sualNo].cavab) {
-                console.log('duz tapdin!')
-                xal += 10
-                document.getElementById('point').textContent = xal
-                wordContainerElem.style.backgroundColor = 'green'
-                clapsAudioElem.play()
-            } else {
-                wordContainerElem.style.backgroundColor = 'red'
-                failAudioElem.play()
-                console.log('yanlisdi')
-                onFinish(false)
-            }
+    if (lastIndex === cavabUzunluq) {
+        symbolsContainerElem.classList.add('disable_all_buttons')
+        if (cavab.toLowerCase() === suallar[sualNo].cavab) {
+            console.log('duz tapdin!')
+            xal += 10
+            document.getElementById('point').textContent = xal
+            wordContainerElem.style.backgroundColor = 'green'
+            clapsAudioElem.play()
+        } else {
+            wordContainerElem.style.backgroundColor = 'red'
+            failAudioElem.play()
+            console.log('yanlisdi')
+            onFinish(false)
         }
-    }, 200);
+    }
 }
 
 
@@ -118,6 +119,6 @@ function clearLastSymbol() {
     +4. ve xallari gostermelidir
     +5. herfleri silmek. sagda 1-1 silmek buttonu
     +6. point system (xal sistemi)
-    7. klaviatura ile yazmaq
+    +7. klaviatura ile yazmaq
     +8. win,fail part
 */
