@@ -7,18 +7,18 @@ const suallar = [
         sual: 'Sen harda yasayirsan?',
         cavab: 'yer'
     },
-    // {
-    //     sual: 'Ali muellime hardan elcatanliq etmek olar?',
-    //     cavab: 'github'
-    // },
-    // {
-    //     sual: 'Ali muellime nece muraciet etmek olar?',
-    //     cavab: 'ali'
-    // },
-    // {
-    //     sual: 'Nicatin adi nedir?',
-    //     cavab: 'aybeniz'
-    // }
+    {
+        sual: 'Ali muellime hardan elcatanliq etmek olar?',
+        cavab: 'github'
+    },
+    {
+        sual: 'Ali muellime nece muraciet etmek olar?',
+        cavab: 'ali'
+    },
+    {
+        sual: 'Nicatin adi nedir?',
+        cavab: 'aybeniz'
+    }
 ]
 
 const questionElem = document.getElementById('question')
@@ -26,6 +26,9 @@ const wordContainerElem = document.getElementById('word_container')
 const symbolsContainerElem = document.getElementById('symbols_container')
 const clapsAudioElem = document.getElementById('claps')
 const failAudioElem = document.getElementById('fail')
+const goNextBtn = document.getElementById('goNextBtn')
+
+goNextBtn.onclick = goNext
 
 let sualNo = 0
 let cavabUzunluq = ''
@@ -39,6 +42,7 @@ writeQuestion()
 function goNext() {
     sualNo++
     writeQuestion()
+    goNextBtn.disabled = true
 }
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Backspace') {
@@ -87,6 +91,7 @@ function alphabetClick(symbol) {
         if (cavab.toLowerCase() === suallar[sualNo].cavab) {
             console.log('duz tapdin!')
             xal += 10
+            goNextBtn.disabled = false
             document.getElementById('point').textContent = xal
             wordContainerElem.style.backgroundColor = 'green'
             clapsAudioElem.play()
@@ -124,4 +129,5 @@ function clearLastSymbol() {
     +7. klaviatura ile yazmaq
     +8. win,fail part
     +9. next on enter
+    +10. disable next untill correct answer 
 */
