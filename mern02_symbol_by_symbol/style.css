@@ -9,7 +9,6 @@
 
 #word_container {
     display: inline-flex;
-    background-color: red;
 }
 
 #word_container>div {

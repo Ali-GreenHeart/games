@@ -50,6 +50,7 @@ function reset() {
         wordContainerElem.removeChild(wordContainerElem.firstChild)
     }
     symbolsContainerElem.classList.remove('disable_all_buttons')
+    wordContainerElem.style.backgroundColor = 'unset'
 }
 
 function writeQuestion() {
@@ -72,8 +73,10 @@ function alphabetClick(symbol) {
             symbolsContainerElem.classList.add('disable_all_buttons')
             if (cavab.toLowerCase() === suallar[sualNo].cavab) {
                 console.log('duz tapdin!')
+                wordContainerElem.style.backgroundColor = 'green'
                 clapsAudioElem.play()
             } else {
+                wordContainerElem.style.backgroundColor = 'red'
                 failAudioElem.play()
                 console.log('yanlisdi')
             }
