@@ -7,18 +7,18 @@ const suallar = [
         sual: 'Sen harda yasayirsan?',
         cavab: 'yer'
     },
-    {
-        sual: 'Ali muellime hardan elcatanliq etmek olar?',
-        cavab: 'github'
-    },
-    {
-        sual: 'Ali muellime nece muraciet etmek olar?',
-        cavab: 'ali'
-    },
-    {
-        sual: 'Nicatin adi nedir?',
-        cavab: 'aybeniz'
-    }
+    // {
+    //     sual: 'Ali muellime hardan elcatanliq etmek olar?',
+    //     cavab: 'github'
+    // },
+    // {
+    //     sual: 'Ali muellime nece muraciet etmek olar?',
+    //     cavab: 'ali'
+    // },
+    // {
+    //     sual: 'Nicatin adi nedir?',
+    //     cavab: 'aybeniz'
+    // }
 ]
 
 const questionElem = document.getElementById('question')
@@ -32,6 +32,7 @@ let cavabUzunluq = ''
 
 let cavab = ''
 let lastIndex = 0
+let xal = 0
 
 writeQuestion()
 
@@ -54,6 +55,10 @@ function reset() {
 }
 
 function writeQuestion() {
+    if (sualNo > suallar.length - 1) {
+        onFinish(true)
+        return;
+    }
     reset()
     questionElem.textContent = suallar[sualNo].sual
     cavabUzunluq = suallar[sualNo].cavab.length
@@ -73,23 +78,35 @@ function alphabetClick(symbol) {
             symbolsContainerElem.classList.add('disable_all_buttons')
             if (cavab.toLowerCase() === suallar[sualNo].cavab) {
                 console.log('duz tapdin!')
+                xal += 10
                 wordContainerElem.style.backgroundColor = 'green'
                 clapsAudioElem.play()
             } else {
                 wordContainerElem.style.backgroundColor = 'red'
                 failAudioElem.play()
                 console.log('yanlisdi')
+                onFinish(false)
             }
         }
     }, 200);
     console.log(symbol)
 }
+
+
+function onFinish(qazandimi) {
+    document.querySelector('.container').style.display = 'none'
+    document.querySelector('#finishPage > h1 > span').textContent = `Siz ${qazandimi ? 'qazandiniz' : 'uduzdunuz'}`
+    document.getElementById('finishPage').style.display = 'block'
+    document.getElementById('max_point').textContent = xal
+}
+
 /*
     +1. dogru tapanda alqis sesleri,sehv tapanda, uduzmalidir (benq benq beeeenq), 
-    2. reng deyishsin, yanlis olanda qirmizi, dogru -> yasil
+    +2. reng deyishsin, yanlis olanda qirmizi, dogru -> yasil
     +3. novbeti sual kecmir
-    4. ve xallari gostermelidir
+    +4. ve xallari gostermelidir
     5. herfleri silmek. sagda 1-1 silmek buttonu
     6. point system (xal sistemi)
     7. klaviatura ile yazmaq
+    +8. win,fail part
 */

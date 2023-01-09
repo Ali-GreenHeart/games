@@ -33,3 +33,7 @@
 .disable_all_buttons > button {
     pointer-events: none;
 }
+
+#finishPage{
+    display: none;
+}
