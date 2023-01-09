@@ -40,7 +40,11 @@ function goNext() {
     sualNo++
     writeQuestion()
 }
-
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace') {
+        clearLastSymbol()
+    }
+})
 function reset() {
     cavab = ''
     lastIndex = 0
@@ -90,7 +94,6 @@ function alphabetClick(symbol) {
             }
         }
     }, 200);
-    console.log(symbol)
 }
 
 
@@ -101,12 +104,19 @@ function onFinish(qazandimi) {
     document.getElementById('max_point').textContent = xal
 }
 
+function clearLastSymbol() {
+    lastIndex = lastIndex - 1
+    let lastDiv = document.getElementById(`div${lastIndex}`)
+    lastDiv.textContent = ''
+    cavab = cavab.slice(0, cavab.length - 1)
+}
+
 /*
     +1. dogru tapanda alqis sesleri,sehv tapanda, uduzmalidir (benq benq beeeenq), 
     +2. reng deyishsin, yanlis olanda qirmizi, dogru -> yasil
     +3. novbeti sual kecmir
     +4. ve xallari gostermelidir
-    5. herfleri silmek. sagda 1-1 silmek buttonu
+    +5. herfleri silmek. sagda 1-1 silmek buttonu
     +6. point system (xal sistemi)
     7. klaviatura ile yazmaq
     +8. win,fail part
