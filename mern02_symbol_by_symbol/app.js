@@ -79,6 +79,7 @@ function alphabetClick(symbol) {
             if (cavab.toLowerCase() === suallar[sualNo].cavab) {
                 console.log('duz tapdin!')
                 xal += 10
+                document.getElementById('point').textContent = xal
                 wordContainerElem.style.backgroundColor = 'green'
                 clapsAudioElem.play()
             } else {
@@ -106,7 +107,7 @@ function onFinish(qazandimi) {
     +3. novbeti sual kecmir
     +4. ve xallari gostermelidir
     5. herfleri silmek. sagda 1-1 silmek buttonu
-    6. point system (xal sistemi)
+    +6. point system (xal sistemi)
     7. klaviatura ile yazmaq
     +8. win,fail part
 */
