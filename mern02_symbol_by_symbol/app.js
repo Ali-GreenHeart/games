@@ -119,15 +119,3 @@ function clearLastSymbol() {
     cavab = cavab.slice(0, cavab.length - 1)
 }
 
-/*
-    +1. dogru tapanda alqis sesleri,sehv tapanda, uduzmalidir (benq benq beeeenq), 
-    +2. reng deyishsin, yanlis olanda qirmizi, dogru -> yasil
-    +3. novbeti sual kecmir
-    +4. ve xallari gostermelidir
-    +5. herfleri silmek. sagda 1-1 silmek buttonu
-    +6. point system (xal sistemi)
-    +7. klaviatura ile yazmaq
-    +8. win,fail part
-    +9. next on enter
-    +10. disable next untill correct answer 
-*/
