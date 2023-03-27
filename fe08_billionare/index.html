@@ -12,25 +12,47 @@
 </head>
 
 <body>
+    <audio id="fail" src="./assets/wah-wah.mp3"></audio>
+    <audio id="claps" src="./assets/claps.mp3"></audio>
     <div class="pageContainer">
-        <div id="loginPage" style="display: none;">
+        <div id="loginPage">
             <h1>Wanna be 🤑Billionare💵?</h1>
-            <input id="name" placeholder="enter your name" type="text">
-            <input id="surname" placeholder="enter your surname" type="text">
-            <input id="phone" placeholder="enter your phone" type="text">
+            <input id="nameInput" placeholder="enter your name" type="text">
+            <input id="surnameInput" placeholder="enter your surname" type="text">
+            <input id="phoneInput" placeholder="enter your phone" type="number">
             <input id="login_btn" value="Log in" type="button">
         </div>
-        
+        <div id="gamePage" style="display: none;">
+            <aside class="prizes-container"></aside>
+            <main class="question-container">
+                <h3 id="questionElem"></h3>
+                <div class="answer-container"></div>
+            </main>
+            <aside class="tips-container">
+                <button id="fiftyFiftyBtn">
+                    <img draggable="false" src="./img/fifty-fifty.png" alt="">
+                </button>
+                <button id="jokerBtn">
+                    <img draggable="false" src="./img/joker.png" alt="">
+                </button>
+                <button id="phoneBtn">
+                    <img draggable="false" src="./img/phone.png" alt="">
+                </button>
+            </aside>
+        </div>
         <div id="finishPage" style="display: none;">
-            <h1>Winner!</h1>
+            <h1>Dear, <span id="user_name">Ali</span> you're <br/> <span id="winner_loser">Winner!</span></h1>
             <div class="results">
-                <h3>Duzgun cavablarin sayi: <span id="correct_count">2</span> </h3>
-                <h3>Qazandiginiz mebleg: <span id="payment">200</span> </h3>
+                <h3>Duzgun cavablarin sayi: <span id="correct_count"></span> </h3>
+                <h3>Qazandiginiz mebleg: <span id="paymentElem"></span> </h3>
             </div>
         </div>
     </div>
 
-    <script src="./app.js"></script>
+    <script src="./js/questions.js"></script>
+    <script src="./js/imports.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/app.js" defer></script>
 </body>
 
 </html>

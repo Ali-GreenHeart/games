@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol By Symbol(SBS Mern)</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <audio id="claps" src="./assets/claps.mp3"></audio>
+    <audio id="fail" src="./assets/wah-wah.mp3"></audio>
+    <div class="container">
+        <div class="xal_sistem"> Xal: <span id="point">0</span> </div>
+        <h2 id="question">En boyuk gol hansidir?</h2>
+        <div id="word_container"></div>
+        <div id="symbols_container">
+            <button onclick="alphabetClick('A')">A</button>
+            <button onclick="alphabetClick('B')">B</button>
+            <button onclick="alphabetClick('C')">C</button>
+            <button onclick="alphabetClick('D')">D</button>
+            <button onclick="alphabetClick('E')">E</button>
+            <button onclick="alphabetClick('F')">F</button>
+            <button onclick="alphabetClick('G')">G</button>
+            <button onclick="alphabetClick('H')">H</button>
+            <button onclick="alphabetClick('I')">I</button>
+            <button onclick="alphabetClick('J')">J</button>
+            <button onclick="alphabetClick('K')">K</button>
+            <button onclick="alphabetClick('L')">L</button>
+            <button onclick="alphabetClick('M')">M</button>
+            <button onclick="alphabetClick('N')">N</button>
+            <button onclick="alphabetClick('O')">O</button>
+            <button onclick="alphabetClick('P')">P</button>
+            <button onclick="alphabetClick('Q')">Q</button>
+            <button onclick="alphabetClick('R')">R</button>
+            <button onclick="alphabetClick('S')">S</button>
+            <button onclick="alphabetClick('T')">T</button>
+            <button onclick="alphabetClick('U')">U</button>
+            <button onclick="alphabetClick('V')">V</button>
+            <button onclick="alphabetClick('W')">W</button>
+            <button onclick="alphabetClick('X')">X</button>
+            <button onclick="alphabetClick('Y')">Y</button>
+            <button onclick="alphabetClick('Z')">Z</button>
+        </div>
+        <button disabled id="goNextBtn">next</button>
+    </div>
+    <div id="finishPage">
+        <h1>Hormetli filankes <span></span> </h1>
+        <p>Yigdiginiz xal: <span id="max_point"></span></p>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>
