@@ -1,7 +1,6 @@
 const root = document.getElementById('root')
-
-let paneData = [
-    {
+debugger
+let paneData = [{
         id: 1,
         heading: 'Lorem',
         description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.`
@@ -35,7 +34,7 @@ function addNewPane(pane) {
     editButton.className = 'remove-button'
     editButton.textContent = '[/edit/]'
     editButton.style.width = '50px'
-    editButton.onclick = function () {
+    editButton.onclick = function() {
         const heading = prompt('heading ne olsun?')
         const description = prompt('description ne olsun?')
         const yeniHedef = paneData.find((pane) => pane.heading.toLowerCase() === heading.toLowerCase())
@@ -57,7 +56,7 @@ function addNewPane(pane) {
     const removeButton = document.createElement('button')
     removeButton.className = 'remove-button'
     removeButton.textContent = '[x]'
-    removeButton.onclick = function () {
+    removeButton.onclick = function() {
         newPane.remove()
         paneData = paneData.filter((pane) => pane.heading.toLowerCase() !== h1.innerText.toLowerCase())
         console.log(paneData)
@@ -78,7 +77,7 @@ const paneDescription = document.getElementById('paneDescription')
 const addPane = document.getElementById('addPane')
 
 
-addPane.onclick = function () {
+addPane.onclick = function() {
     if (paneHeading.value.trim() === "") {
         alert('ay qa bosdur, neynirsen?')
     } else {

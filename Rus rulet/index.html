@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Example</title>
+</head>
+
+<body>
+
+
+
+    <form id="form1" action="/cgi-bin/CGIcpp3.cgi" method="post">
+        <label for="input-number1">Your input:</label>
+        <input id="iput-number1" type="text" name="number1">
+        <br>
+        <label for="input-number2">Game code:</label>
+        <input id="iput-number2" type="text" name="number2">
+        <br>
+        <button onclick="sendp('form1','response1',false)">Submit</button>
+    </form>
+    <pre id="response1"></pre>
+    <script src="sends.js"></script>
+</body>
+
+</html>
