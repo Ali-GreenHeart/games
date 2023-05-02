@@ -6,7 +6,8 @@ const btnPreSong = document.getElementById('btnPreSong')
 const btnPlayPause = document.getElementById('btnPlayPause')
 const btnNextSong = document.getElementById('btnNextSong')
 const btnForward = document.getElementById('btnForward')
-
+const songVolUp = document.getElementById('songVolUp')
+const songVolDown = document.getElementById('songVolDown')
 
 let currentSong = 0
 
@@ -68,6 +69,23 @@ btnPreSong.onclick = () => {
     }
     writeData(currentSong)
     playSong()
+}
+// Error: 1-den yuxari olmamalidir
+songVolUp.onclick = () => {
+    if (song.volume > 1) {
+        song.volume = 1
+    } else {
+        song.volume += 0.1
+    }
+}
+// Error: 0-dan asagi olmamalidir
+songVolDown.onclick = () => {
+    // console.log(song.volume.toFixed(1))
+    if (song.volume.toFixed(1) === 0) {
+        songVolDown.disabled = true
+    } else {
+        song.volume -= 0.1
+    }
 }
 
 function writeData(c) {

@@ -18,6 +18,23 @@ body {
     text-align: center;
 }
 
+.song-name {
+    position: relative;
+}
+
+.song-name button {
+    position: absolute;
+    right: -20px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    top: 80px;
+}
+
+#songVolDown {
+    top: 110px;
+}
+
 .song-name img {
     width: 100%;
 }
