@@ -37,21 +37,13 @@ const songs = [
 
 writeData(currentSong)
 
-btnPlayPause.onclick = () => {
-    if (song.paused) {
-        playSong()
-    } else {
-        pauseSong()
-    }
-}
+btnPlayPause.onclick = () => song.paused ? playSong() : pauseSong()
 
 
-btnForward.onclick = () => {
-    song.currentTime += 5
-}
-btnBackward.onclick = () => {
-    song.currentTime -= 5
-}
+btnForward.onclick = () => song.currentTime += 5
+btnBackward.onclick = () => song.currentTime -= 5
+
+
 btnNextSong.onclick = () => {
     if (currentSong >= songs.length - 1) {
         currentSong = 0
