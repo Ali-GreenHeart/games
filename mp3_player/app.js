@@ -8,6 +8,9 @@ const btnNextSong = document.getElementById('btnNextSong')
 const btnForward = document.getElementById('btnForward')
 
 
+
+
+
 btnPlayPause.onclick = () => {
     if (song.paused) {
         btnPlayPause.innerHTML = '<i class="fa-solid fa-pause"></i>'
@@ -16,4 +19,11 @@ btnPlayPause.onclick = () => {
         btnPlayPause.innerHTML = '<i class="fa-solid fa-play"></i>'
         song.pause()
     }
+}
+
+btnForward.onclick = () => {
+    song.currentTime += 5
+}
+btnBackward.onclick = () => {
+    song.currentTime -= 5
 }
