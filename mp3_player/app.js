@@ -94,3 +94,11 @@ function pauseSong() {
     btnPlayPause.innerHTML = '<i class="fa-solid fa-play"></i>'
     song.pause()
 }
+
+
+/*
+1. Fix errors (volume up & down)
+2. mahni bitende novbetisine kecsin. (loop mentiqi)
+2*. Ferqli formada olmali, eger loopdursa yuxaridaki mentiq, repeat-dirse eyni mahni tekrarlanmali, randomdursa random mahni olmalidir. 
+3. slider olsun (controls olmadan)
+*/
