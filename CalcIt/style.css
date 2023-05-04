@@ -35,3 +35,18 @@ input {
     padding: 0;
     margin: 4px 0px;
 }
+
+
+button {
+    border: none;
+    background-color: gray;
+    transition: all 200ms;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #eee;
+    box-shadow: 0px 0px 4px inset black, 0px 0px 4px black;
+}
