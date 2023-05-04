@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CalcIt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="./calcit.png" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -29,12 +31,12 @@
             <button onclick="btnForNumber('2')">2</button>
             <button onclick="btnForNumber('3')">3</button>
             <button onclick="btnForOperator('/')">/</button>
-            <button onclick="btnForSpecialOperator('pow2')">x2</button>
+            <button onclick="btnForSpecialOperator('pow2')"><i class="fa-solid fa-superscript"></i></button>
             <button onclick="btnForDot()">.</button>
             <button onclick="btnForNumber('0')">0</button>
-            <button onclick="btnForCalculate()">=</button>
-            <button onclick="btnForOperator('*')">*</button>
-            <button onclick="btnForSpecialOperator('sqrt')">sqrt</button>
+            <button onclick="btnForCalculate()"><i class="fa-solid fa-equals"></i></button>
+            <button onclick="btnForOperator('*')"><i class="fa-solid fa-asterisk"></i></button>
+            <button onclick="btnForSpecialOperator('sqrt')"><i class="fa-solid fa-square-root-variable"></i></button>
         </div>
     </div>
     <script src="./app.js"></script>
