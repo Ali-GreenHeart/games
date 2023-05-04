@@ -1,13 +1,19 @@
 const enteredNumber = document.getElementById('entered_number')
 
-function btnForNumber(ed) {
-    enteredNumber.value += ed
-}
-
 let birinciEded = 0
 let operator = ''
 let ikinciEded = 0
+let calculated = false
 
+
+function btnForNumber(ed) {
+    if (calculated) {
+        enteredNumber.value = ed
+        calculated = false
+    } else {
+        enteredNumber.value += ed
+    }
+}
 function btnForOperator(_operator) {
     birinciEded = +enteredNumber.value
     enteredNumber.value = ''
@@ -30,6 +36,7 @@ function btnForDot() {
 
 function btnForCalculate() {
     ikinciEded = +enteredNumber.value
+    calculated = true
     switch (operator) {
         case '+':
             enteredNumber.value = birinciEded + ikinciEded
