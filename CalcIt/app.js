@@ -1,7 +1,7 @@
 const enteredNumber = document.getElementById('entered_number')
 
 function btnForNumber(ed) {
-    console.log(ed)
+    enteredNumber.value += ed
 }
 
 
