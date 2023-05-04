@@ -15,26 +15,26 @@
     <div class="calculator">
         <input id="entered_number" type="text">
         <div class="btn-container">
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>+</button>
-            <button>x</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>-</button>
-            <button>c</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>/</button>
-            <button>x2</button>
-            <button>.</button>
-            <button>0</button>
-            <button>=</button>
-            <button>*</button>
-            <button>sqrt</button>
+            <button onclick="btnForNumber('7')">7</button>
+            <button onclick="btnForNumber('8')">8</button>
+            <button onclick="btnForNumber('9')">9</button>
+            <button onclick="btnForOperator('+')">+</button>
+            <button onclick="btnForBackspace()">x</button>
+            <button onclick="btnForNumber('4')">4</button>
+            <button onclick="btnForNumber('5')">5</button>
+            <button onclick="btnForNumber('6')">6</button>
+            <button onclick="btnForOperator('-')">-</button>
+            <button onclick="btnForClear()">c</button>
+            <button onclick="btnForNumber('1')">1</button>
+            <button onclick="btnForNumber('2')">2</button>
+            <button onclick="btnForNumber('3')">3</button>
+            <button onclick="btnForOperator('/')">/</button>
+            <button onclick="btnForOperator('pow2')">x2</button>
+            <button onclick="btnForDot()">.</button>
+            <button onclick="btnForNumber('0')">0</button>
+            <button onclick="btnForCalculate()">=</button>
+            <button onclick="btnForOperator('*')">*</button>
+            <button onclick="btnForOperator('sqrt')">sqrt</button>
         </div>
     </div>
     <script src="./app.js"></script>
