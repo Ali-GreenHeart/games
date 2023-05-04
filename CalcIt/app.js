@@ -16,7 +16,10 @@ function btnForOperator(_operator) {
 
 
 function btnForClear() {
-
+    enteredNumber.value = ''
+    birinciEded = 0
+    operator = ''
+    ikinciEded = 0
 }
 
 function btnForDot() {
