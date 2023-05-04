@@ -53,5 +53,6 @@ function btnForCalculate() {
 }
 
 function btnForBackspace() {
-
+    let value = enteredNumber.value
+    enteredNumber.value = value.slice(0, value.length - 1)
 }
