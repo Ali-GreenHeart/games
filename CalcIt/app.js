@@ -23,7 +23,9 @@ function btnForClear() {
 }
 
 function btnForDot() {
-
+    if (!enteredNumber.value.includes('.')) {
+        enteredNumber.value += '.'
+    }
 }
 
 function btnForCalculate() {
