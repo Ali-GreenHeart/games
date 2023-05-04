@@ -3,13 +3,13 @@ const enteredNumber = document.getElementById('entered_number')
 let birinciEded = 0
 let operator = ''
 let ikinciEded = 0
-let calculated = false
+let clickedOnEnter = false
 
 
 function btnForNumber(ed) {
-    if (calculated) {
+    if (clickedOnEnter) {
         enteredNumber.value = ed
-        calculated = false
+        clickedOnEnter = false
     } else {
         enteredNumber.value += ed
     }
@@ -36,7 +36,7 @@ function btnForDot() {
 
 function btnForCalculate() {
     ikinciEded = +enteredNumber.value
-    calculated = true
+    clickedOnEnter = true
     switch (operator) {
         case '+':
             enteredNumber.value = birinciEded + ikinciEded
@@ -47,14 +47,8 @@ function btnForCalculate() {
         case '/':
             enteredNumber.value = birinciEded / ikinciEded
             break;
-        case 'pow2':
-            enteredNumber.value = birinciEded * birinciEded
-            break;
         case '*':
             enteredNumber.value = birinciEded * ikinciEded
-            break;
-        case 'sqrt':
-            enteredNumber.value = Math.sqrt(birinciEded)
             break;
     }
 }
@@ -62,4 +56,17 @@ function btnForCalculate() {
 function btnForBackspace() {
     let value = enteredNumber.value
     enteredNumber.value = value.slice(0, value.length - 1)
+}
+
+function btnForSpecialOperator(_operator) {
+    birinciEded = +enteredNumber.value
+    clickedOnEnter = true
+    switch (_operator) {
+        case 'pow2':
+            enteredNumber.value = Math.pow(birinciEded, 2)
+            break;
+        case 'sqrt':
+            enteredNumber.value = Math.sqrt(birinciEded)
+            break;
+    }
 }
