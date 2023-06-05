@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.carousel-container {}
+
+.carousel {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.carousel_item {
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 0 4px black;
+    padding: 10px;
+}
+
+.carousel_item img {
+    width: 100%;
+}
