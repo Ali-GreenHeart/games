@@ -6,9 +6,12 @@ body {
     margin: 0;
 }
 
-.carousel-container {}
+.carousel-container {
+    margin: 100px 0;
+}
 
 .carousel {
+    position: relative;
     display: flex;
     max-width: 1000px;
     margin: 0 auto;
@@ -25,4 +28,31 @@ body {
 
 .carousel_item img {
     width: 100%;
+}
+
+.arrow_btn {
+    position: absolute;
+    top: 100px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 32px;
+    font-family: fantasy;
+    background-color: rgba(128, 128, 128, 0.406);
+    border: 0;
+    color: gray;
+}
+
+.arrow_btn:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}
+
+.lt_arrow {
+    left: 5px;
+}
+
+.gt_arrow {
+    right: 5px;
 }
